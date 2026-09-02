@@ -81,11 +81,18 @@ window.SiperLoginView = {
                 </button>
               </div>
 
-              <!-- Quick Demo Sign-in Hint -->
-              <div class="p-3 bg-surface-container rounded-lg border border-outline text-[11px] text-muted-text space-y-1 mt-4">
-                <div class="font-semibold text-white flex items-center gap-1.5">
-                  <span class="material-symbols-outlined text-primary text-[14px]">info</span>
-                  <span>SIH Autonomous Demonstration Access</span>
+              <!-- Quick Demo Sign-in Hint & One-Click Access -->
+              <div class="p-3 bg-surface-container rounded-lg border border-outline text-[11px] text-muted-text space-y-2 mt-4">
+                <div class="flex items-center justify-between">
+                  <div class="font-semibold text-white flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-primary text-[14px]">info</span>
+                    <span>SIH Autonomous Demo Access</span>
+                  </div>
+                  <button type="button" onclick="window.SiperLoginView.demoBypass()"
+                          class="px-2 py-0.5 bg-primary/20 hover:bg-primary/30 text-primary border border-primary/40 rounded text-[10px] font-bold font-mono transition-all flex items-center gap-1">
+                    <span>Quick Entry</span>
+                    <span class="material-symbols-outlined text-[12px]">bolt</span>
+                  </button>
                 </div>
                 <div class="font-mono text-[10px] text-primary font-bold">Default: investigator@siper.gov.in / Sentinel@2026</div>
               </div>
@@ -205,6 +212,20 @@ window.SiperLoginView = {
       this.state.error = "Security token verification failed.";
     }
     window.SiperApp.render();
+  },
+
+  demoBypass() {
+    const demoUser = {
+      user_id: "usr_001",
+      email: "investigator@siper.gov.in",
+      name: "Investigator-7",
+      role: "INVESTIGATOR",
+      badge_number: "NCRB-INV-26189",
+      unit: "Special Intelligence Wing"
+    };
+    window.SiperApp.setAuth("demo_token_siper_26189", demoUser);
+    window.SiperApp.showToast("Logged in via SIH Autonomous Demo Mode", "success");
+    window.SiperApp.navigate("dashboard");
   },
 
   backToLogin() {

@@ -2,15 +2,21 @@
 SIPER Network Graph Analytics Engine
 Powered by NetworkX for graph traversal, centrality analysis, community detection, and shortest path finding.
 """
-import networkx as nx
+try:
+    import networkx as nx
+except ImportError:
+    nx = None
+
 import json
 import sqlite3
 from typing import Dict, Any, List, Optional, Tuple
 from .config import ENTITY_COLORS
 from .database import get_db
 
-def build_networkx_graph() -> nx.Graph:
+def build_networkx_graph():
     """Load all entities and relationships from SQLite into a NetworkX Graph."""
+    if nx is None:
+        return None
     G = nx.Graph()
     conn = get_db()
     try:

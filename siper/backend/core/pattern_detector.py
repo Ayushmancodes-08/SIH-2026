@@ -8,7 +8,11 @@ Executes graph algorithms and rule-based detectors to surface suspicious investi
 5. Cross-Case Associations
 6. Community Bridges (high-betweenness nodes connecting isolated clusters)
 """
-import networkx as nx
+try:
+    import networkx as nx
+except ImportError:
+    nx = None
+
 import json
 import time
 import secrets
