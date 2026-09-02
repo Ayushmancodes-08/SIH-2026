@@ -9,13 +9,26 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 BACKEND_DIR = BASE_DIR / "backend"
 FRONTEND_DIR = BASE_DIR / "frontend"
-DATA_DIR = BASE_DIR / "data"
+
+# Use /tmp directory if running in Vercel / Serverless environment
+if os.environ.get("VERCEL") or os.environ.get("AWS_LAMBDA_FUNCTION_NAME"):
+    DATA_DIR = Path("/tmp/siper_data")
+else:
+    DATA_DIR = BASE_DIR / "data"
+
 UPLOADS_DIR = DATA_DIR / "uploads"
 DB_PATH = DATA_DIR / "siper.db"
 
 # Ensure runtime directories exist
-DATA_DIR.mkdir(parents=True, exist_ok=True)
-UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
+try:
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
+except Exception:
+    DATA_DIR = Path("/tmp/siper_data")
+    UPLOADS_DIR = DATA_DIR / "uploads"
+    DB_PATH = DATA_DIR / "siper.db"
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
 
 # Server settings
 PORT = int(os.environ.get("SIPER_PORT", 8000))

@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/styles/(.*)",
+      "destination": "/siper/frontend/styles/$1"
+    },
+    {
+      "source": "/src/(.*)",
+      "destination": "/siper/frontend/src/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/siper/frontend/index.html"
+    }
+  ]
+}
