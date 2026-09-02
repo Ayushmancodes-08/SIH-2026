@@ -1,0 +1,8 @@
+# SIPER - AI-Powered Criminal Network Analysis System
+# Core Backend runs entirely using Python Standard Library (3.8+)
+# Zero mandatory external wheels required for out-of-the-box operation.
+
+# Optional / Extended ML & Network Graph Analytics:
+# networkx>=3.0
+# spacy>=3.5.0
+# requests>=2.31.0

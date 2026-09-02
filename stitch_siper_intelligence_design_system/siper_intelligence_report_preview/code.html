@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SIPER Intelligence System - Report Preview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#00285d",
+                    "surface-container-lowest": "#0d0e10",
+                    "on-secondary": "#2f3033",
+                    "primary-fixed": "#d8e2ff",
+                    "outline-variant": "#424754",
+                    "on-secondary-fixed": "#1b1b1f",
+                    "on-tertiary-container": "#282a2f",
+                    "tertiary-fixed": "#e2e2e9",
+                    "on-tertiary": "#2e3036",
+                    "on-error": "#690005",
+                    "inverse-on-surface": "#303033",
+                    "tertiary-fixed-dim": "#c6c6cd",
+                    "secondary-fixed-dim": "#c7c6ca",
+                    "primary-fixed-dim": "#adc6ff",
+                    "surface-container-low": "#1b1c1e",
+                    "on-secondary-container": "#b5b4b9",
+                    "surface-container": "#1f2022",
+                    "error": "#ffb4ab",
+                    "surface-dim": "#121315",
+                    "on-primary": "#002e6a",
+                    "on-tertiary-fixed-variant": "#45474c",
+                    "surface-variant": "#343537",
+                    "primary-container": "#4d8eff",
+                    "tertiary": "#c6c6cd",
+                    "primary": "#adc6ff",
+                    "secondary-container": "#46464a",
+                    "outline": "#8c909f",
+                    "on-primary-fixed-variant": "#004395",
+                    "inverse-primary": "#005ac2",
+                    "surface-tint": "#adc6ff",
+                    "secondary": "#c7c6ca",
+                    "on-error-container": "#ffdad6",
+                    "inverse-surface": "#e3e2e5",
+                    "on-secondary-fixed-variant": "#46464a",
+                    "surface-bright": "#38393b",
+                    "surface-container-high": "#292a2c",
+                    "on-primary-fixed": "#001a42",
+                    "secondary-fixed": "#e3e2e6",
+                    "surface": "#121315",
+                    "background": "#121315",
+                    "on-background": "#e3e2e5",
+                    "error-container": "#93000a",
+                    "surface-container-highest": "#343537",
+                    "on-surface": "#e3e2e5",
+                    "on-tertiary-fixed": "#1a1c21",
+                    "on-surface-variant": "#c2c6d6",
+                    "tertiary-container": "#8f9097"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "panel-gutter": "16px",
+                    "grid-columns": "12",
+                    "component-padding-y": "8px",
+                    "base": "4px",
+                    "container-margin": "24px",
+                    "component-padding-x": "12px"
+            },
+            "fontFamily": {
+                    "section-title": ["Inter"],
+                    "body-main": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "metadata-caps": ["Inter"]
+            },
+            "fontSize": {
+                    "section-title": ["18px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "body-main": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "display-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-md": ["22px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "metadata-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.08em", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-main selection:bg-primary-container selection:text-on-primary-container">
+<!-- Classification Banner (Top) -->
+<div class="fixed top-0 w-full z-50 bg-error-container text-on-error-container text-center py-1 border-b border-error/20 flex justify-center items-center h-8">
+<span class="font-metadata-caps text-metadata-caps">CONFIDENTIAL // LEVEL 4 AUTHORIZATION REQUIRED</span>
+</div>
+<!-- TopNavBar -->
+<header class="fixed top-8 left-0 w-full h-16 flex justify-between items-center px-container-margin z-40 bg-surface-container-low dark:bg-surface-container-low border-b border-white/5">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="policy">policy</span>
+<h1 class="text-headline-md font-headline-md font-bold text-on-surface dark:text-on-surface tracking-tight">SIPER Intelligence System</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2">
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-200 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-200 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-200 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="apps">apps</span>
+</button>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-white/10">
+<img alt="Investigator profile" class="w-full h-full object-cover" data-alt="Close up profile picture of a specialized investigator in a dimly lit, high-tech command center. Cool blue lighting. Serious expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3SeDXMj-goYwOreVKWVZwYWKH9JQEjAZ8IfGBIDuFm7mtXt4W7VzG0Xoq9VVriaNImVLC0Fln1dBzOj7W9d1tsWEkYMCqQnAJV5PwpBYRAQ4NlBD-wgwZgfmMW2X-fMG_2dUnqhFrI-pAxbGYhNORWLFV_QuENPLFnNkFwTi2vARDoj4WDAId1X_Lgx2l1FfCdDILOjhX9wM3XXHRq42vvxpCxa3cdNFx9X6baToiUsgyN6tf5tM2xA"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-24 h-[calc(100vh-96px)] w-60 flex flex-col py-4 px-3 z-30 bg-surface-container dark:bg-surface-container border-r border-white/5">
+<div class="mb-8 px-2 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center border border-white/10 overflow-hidden">
+<img alt="Agency emblem" class="w-full h-full object-cover" data-alt="Minimalist emblem for an intelligence task force, featuring a geometric eagle head in metallic silver against a dark background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACSZ1oSEE_7W2sPTrwok5FJ3q1SUznr-sN3qRMB9vQiXFNdSTmkdlfzFrhB7z-jUibzJj4BO6yhiB0lu5Eg2Z_-0t2IVYW8HmqbROasp6s5oYepImPsPQg_3nkC4WsZsgCatOuDA8fPzMh-M1M7q2ehrp4g2djUwfcn4twyMTg1WHLDhuFISVe0j1Xhkjzej_qskuxVk7WoFM3X9anNmyxU06XP6-TnH8oLROK_i1AIO4AZyn-Dc89uQ"/>
+</div>
+<div>
+<h2 class="text-section-title font-section-title text-on-surface">Task Force Alpha</h2>
+<p class="text-metadata-caps font-metadata-caps text-on-surface-variant mt-1">Level 4 Clearance</p>
+</div>
+</div>
+<ul class="flex flex-col gap-1 flex-1">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all duration-150 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span> Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all duration-150 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span> Cases
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all duration-150 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined" data-icon="person_search">person_search</span> Entity Search
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all duration-150 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span> Graph Explorer
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all duration-150 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span> Evidence
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary-container text-on-primary-container rounded-lg opacity-80 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined" data-icon="analytics" data-weight="fill">analytics</span> Reports
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all duration-150 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span> Audit Log
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all duration-150 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span> Settings
+                </a>
+</li>
+</ul>
+<ul class="flex flex-col gap-1 mt-auto pt-4 border-t border-white/5">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all duration-150 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span> Support
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all duration-150 font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span> Logout
+                </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-60 pt-24 pb-20 px-container-margin h-screen overflow-y-auto">
+<div class="max-w-[1200px] mx-auto bg-[#141518] rounded-xl border border-white/5 shadow-2xl relative overflow-hidden mb-8">
+<!-- Report Header -->
+<div class="px-8 py-10 border-b border-white/5 bg-[#191B20] relative">
+<div class="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-9xl">fingerprint</span>
+</div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<div class="font-metadata-caps text-metadata-caps text-primary mb-2 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                            DRAFT REPORT PREVIEW
+                        </div>
+<h1 class="font-display-lg text-display-lg text-on-surface">Operation Silent Ledger</h1>
+</div>
+<div class="text-right">
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant mb-1">DATE GENERATED</div>
+<div class="font-label-sm text-label-sm text-on-surface">2023-10-27 14:32:00Z</div>
+</div>
+</div>
+<!-- Investigation Context -->
+<div class="flex gap-4 p-4 rounded-lg bg-[#141518] border border-white/5">
+<div class="flex-1">
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant mb-1">CASE ID</div>
+<div class="font-headline-md text-headline-md text-on-surface font-mono">CASE-26189</div>
+</div>
+<div class="w-px bg-white/10"></div>
+<div class="flex-1">
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant mb-1">PRIMARY ANALYST</div>
+<div class="font-label-sm text-label-sm text-on-surface">Investigator K. Vance (ID: 8829)</div>
+</div>
+<div class="w-px bg-white/10"></div>
+<div class="flex-1">
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant mb-1">THREAT LEVEL</div>
+<div class="font-label-sm text-label-sm text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">warning</span> HIGH
+                         </div>
+</div>
+</div>
+</div>
+<!-- Bento Grid Content -->
+<div class="p-8 grid grid-cols-12 gap-panel-gutter">
+<!-- Executive Summary -->
+<section class="col-span-12 md:col-span-8 bg-[#191B20] rounded-lg border border-white/5 p-6">
+<h2 class="font-section-title text-section-title text-on-surface mb-4 flex items-center gap-2 border-b border-white/5 pb-2">
+<span class="material-symbols-outlined text-primary">summarize</span>
+                        Executive Summary
+                    </h2>
+<div class="font-body-main text-body-main text-on-surface-variant leading-relaxed space-y-4">
+<p>Analysis of financial routing patterns spanning Q1-Q3 indicates a high-probability coordinated effort to obfuscate funds originating from shell corporation <strong>Apex Logistics Int.</strong> through a series of decentralized crypto exchanges.</p>
+<p>Key entities have been isolated, demonstrating repeated, synchronized interactions that deviate significantly from standard operational behavior for entities in this sector. The timeline correlates closely with geopolitical events in Sector 7.</p>
+</div>
+</section>
+<!-- AI Findings -->
+<section class="col-span-12 md:col-span-4 bg-[#191B20] rounded-lg border border-white/5 p-6 relative overflow-hidden">
+<!-- Subtle gradient to indicate AI -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none"></div>
+<h2 class="font-section-title text-section-title text-on-surface mb-4 flex items-center gap-2 border-b border-white/5 pb-2 relative z-10">
+<span class="material-symbols-outlined text-primary">psychology</span>
+                        AI-Assisted Findings
+                    </h2>
+<ul class="space-y-4 relative z-10">
+<li class="p-3 bg-[#141518] rounded border border-white/5">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-sm text-label-sm text-on-surface">Anomaly Detected: Transfer Velocity</span>
+<span class="font-metadata-caps text-metadata-caps bg-primary/20 text-primary px-2 py-0.5 rounded">92% CONF</span>
+</div>
+<p class="font-body-main text-body-main text-on-surface-variant text-sm">Transfer velocity between Nexus Corp and Node 8 exceeds baseline by 400%.</p>
+</li>
+<li class="p-3 bg-[#141518] rounded border border-white/5">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-sm text-label-sm text-on-surface">Structural Similarity</span>
+<span class="font-metadata-caps text-metadata-caps bg-primary/20 text-primary px-2 py-0.5 rounded">87% CONF</span>
+</div>
+<p class="font-body-main text-body-main text-on-surface-variant text-sm">Network topology matches known laundering syndicate 'Crimson Tide' (Ref: ARCH-992).</p>
+</li>
+</ul>
+</section>
+<!-- Key Entities -->
+<section class="col-span-12 bg-[#191B20] rounded-lg border border-white/5 p-6">
+<h2 class="font-section-title text-section-title text-on-surface mb-4 flex items-center gap-2 border-b border-white/5 pb-2">
+<span class="material-symbols-outlined text-primary">groups</span>
+                        Key Entities
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Entity 1 -->
+<div class="flex items-center gap-3 p-3 bg-[#141518] rounded border border-white/5 border-t-2 border-t-error">
+<div class="w-10 h-10 rounded bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface">person</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="font-label-sm text-label-sm text-on-surface truncate">Viktor Volkov</div>
+<div class="font-metadata-caps text-metadata-caps text-error">PRIMARY TARGET</div>
+</div>
+</div>
+<!-- Entity 2 -->
+<div class="flex items-center gap-3 p-3 bg-[#141518] rounded border border-white/5 border-t-2 border-t-primary">
+<div class="w-10 h-10 rounded bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface">domain</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="font-label-sm text-label-sm text-on-surface truncate">Apex Logistics Int.</div>
+<div class="font-metadata-caps text-metadata-caps text-primary">FRONT ORG</div>
+</div>
+</div>
+<!-- Entity 3 -->
+<div class="flex items-center gap-3 p-3 bg-[#141518] rounded border border-white/5 border-t-2 border-t-tertiary">
+<div class="w-10 h-10 rounded bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface">account_balance</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="font-label-sm text-label-sm text-on-surface truncate">Cayman Trust Auth</div>
+<div class="font-metadata-caps text-metadata-caps text-tertiary">FINANCIAL NODE</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Network Analysis & Timeline -->
+<section class="col-span-12 md:col-span-7 bg-[#191B20] rounded-lg border border-white/5 p-6 flex flex-col">
+<h2 class="font-section-title text-section-title text-on-surface mb-4 flex items-center gap-2 border-b border-white/5 pb-2">
+<span class="material-symbols-outlined text-primary">hub</span>
+                        Network Analysis Snapshot
+                    </h2>
+<div class="flex-1 bg-[#141518] rounded border border-white/5 relative min-h-[300px] overflow-hidden flex items-center justify-center group">
+<!-- Graph Visualization Placeholder -->
+<div class="absolute inset-0 opacity-40 mix-blend-screen" data-alt="A dark, abstract digital network graph visualization. Glowing nodes in cyan and magenta connected by thin, bright lines on a pitch black background. The structure resembles a complex constellation or neural network. High tech intelligence aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA961KNgHsjcix9DOvGy7ljIUqKqo-GSQFSGSJiA7ns-szcAt6Ccmcv_15O3R0wJXKXDVW4toM3ECo-otjuTvo9PfuJI6volx_Qha6MW-YzjeEZmp1LQuxkc1ZAO7tGXWz-4l6344Aacpgh9gjOaSvB8m6CtQvZfZUogbEDU2PR8yjVzvF7733M20uSbMldWe8GbrkTq1jl4e8s_93aEDF-pvf95uzTWSEp4PyJN8dnTImj-VVAqPUIrw')"></div>
+<!-- Graph Overlay Controls -->
+<div class="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 bg-[#191B20]/80 backdrop-blur-md rounded border border-white/10 text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-sm">zoom_in</span>
+</button>
+<button class="p-1.5 bg-[#191B20]/80 backdrop-blur-md rounded border border-white/10 text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-sm">zoom_out</span>
+</button>
+<button class="p-1.5 bg-[#191B20]/80 backdrop-blur-md rounded border border-white/10 text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-sm">filter_center_focus</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Timeline & Evidence -->
+<div class="col-span-12 md:col-span-5 flex flex-col gap-panel-gutter">
+<!-- Timeline -->
+<section class="bg-[#191B20] rounded-lg border border-white/5 p-6 flex-1">
+<h2 class="font-section-title text-section-title text-on-surface mb-4 flex items-center gap-2 border-b border-white/5 pb-2">
+<span class="material-symbols-outlined text-primary">timeline</span>
+                            Event Timeline
+                        </h2>
+<div class="relative border-l border-white/10 ml-3 space-y-4 py-2">
+<div class="relative pl-4">
+<span class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-error ring-4 ring-[#191B20]"></span>
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant">2023-09-12</div>
+<div class="font-label-sm text-label-sm text-on-surface">Initial flag raised by automated scanning system.</div>
+</div>
+<div class="relative pl-4">
+<span class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-primary ring-4 ring-[#191B20]"></span>
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant">2023-09-15</div>
+<div class="font-label-sm text-label-sm text-on-surface">Subpoena served to Apex Logistics.</div>
+</div>
+<div class="relative pl-4">
+<span class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-tertiary ring-4 ring-[#191B20]"></span>
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant">2023-10-02</div>
+<div class="font-label-sm text-label-sm text-on-surface">Data extraction from seized devices completed.</div>
+</div>
+</div>
+</section>
+<!-- Supporting Evidence -->
+<section class="bg-[#191B20] rounded-lg border border-white/5 p-6 flex-1">
+<h2 class="font-section-title text-section-title text-on-surface mb-4 flex items-center gap-2 border-b border-white/5 pb-2">
+<span class="material-symbols-outlined text-primary">folder_open</span>
+                            Supporting Evidence
+                        </h2>
+<ul class="space-y-2">
+<li class="flex items-center gap-3 p-2 hover:bg-[#141518] rounded cursor-pointer transition-colors border border-transparent hover:border-white/5">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">picture_as_pdf</span>
+<div class="flex-1 min-w-0">
+<div class="font-label-sm text-label-sm text-on-surface truncate">Bank_Records_Q3.pdf</div>
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant">SOURCE: SEC-FIN-01</div>
+</div>
+</li>
+<li class="flex items-center gap-3 p-2 hover:bg-[#141518] rounded cursor-pointer transition-colors border border-transparent hover:border-white/5">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">description</span>
+<div class="flex-1 min-w-0">
+<div class="font-label-sm text-label-sm text-on-surface truncate">Comm_Intercept_Transcripts.txt</div>
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant">SOURCE: SIGINT-9A</div>
+</div>
+</li>
+</ul>
+</section>
+</div>
+<!-- Analyst Notes & Audit Metadata -->
+<section class="col-span-12 bg-[#191B20] rounded-lg border border-white/5 p-6">
+<h2 class="font-section-title text-section-title text-on-surface mb-4 flex items-center gap-2 border-b border-white/5 pb-2">
+<span class="material-symbols-outlined text-primary">edit_note</span>
+                        Analyst Notes &amp; Audit Metadata
+                    </h2>
+<div class="bg-[#141518] border border-white/5 rounded p-4 mb-4">
+<textarea class="w-full bg-transparent border-none text-on-surface font-body-main text-body-main placeholder:text-on-surface-variant focus:ring-0 resize-none h-24" placeholder="Add supplementary notes here prior to final generation..."></textarea>
+</div>
+<div class="flex gap-6 text-on-surface-variant font-metadata-caps text-metadata-caps">
+<span>SYS_ID: REQ-0992-A</span>
+<span>HASH: a8f9e2...331b</span>
+<span>PERMISSIONS: RESTRICTED READ/WRITE</span>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Bottom Actions Bar -->
+<div class="fixed bottom-0 left-60 right-0 h-16 bg-surface-container-low border-t border-white/5 flex items-center justify-between px-container-margin z-40">
+<button class="px-4 py-2 border border-white/20 rounded text-on-surface font-label-sm text-label-sm hover:bg-white/5 transition-colors">
+            Back
+        </button>
+<button class="px-6 py-2 bg-primary text-on-primary rounded font-label-sm text-label-sm font-semibold hover:bg-primary-fixed transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">print</span>
+            Generate Report
+        </button>
+</div>
+<!-- Classification Banner (Bottom) -->
+<div class="fixed bottom-0 w-full z-50 bg-error-container text-on-error-container text-center py-1 border-t border-error/20 flex justify-center items-center h-8 pointer-events-none">
+<span class="font-metadata-caps text-metadata-caps">CONFIDENTIAL // LEVEL 4 AUTHORIZATION REQUIRED</span>
+</div>
+</body></html>

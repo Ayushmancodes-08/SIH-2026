@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reports Index - SIPER Intelligence System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#00285d",
+                      "surface-container-lowest": "#0d0e10",
+                      "on-secondary": "#2f3033",
+                      "primary-fixed": "#d8e2ff",
+                      "outline-variant": "#424754",
+                      "on-secondary-fixed": "#1b1b1f",
+                      "on-tertiary-container": "#282a2f",
+                      "tertiary-fixed": "#e2e2e9",
+                      "on-tertiary": "#2e3036",
+                      "on-error": "#690005",
+                      "inverse-on-surface": "#303033",
+                      "tertiary-fixed-dim": "#c6c6cd",
+                      "secondary-fixed-dim": "#c7c6ca",
+                      "primary-fixed-dim": "#adc6ff",
+                      "surface-container-low": "#1b1c1e",
+                      "on-secondary-container": "#b5b4b9",
+                      "surface-container": "#1f2022",
+                      "error": "#ffb4ab",
+                      "surface-dim": "#121315",
+                      "on-primary": "#002e6a",
+                      "on-tertiary-fixed-variant": "#45474c",
+                      "surface-variant": "#343537",
+                      "primary-container": "#4d8eff",
+                      "tertiary": "#c6c6cd",
+                      "primary": "#adc6ff",
+                      "secondary-container": "#46464a",
+                      "outline": "#8c909f",
+                      "on-primary-fixed-variant": "#004395",
+                      "inverse-primary": "#005ac2",
+                      "surface-tint": "#adc6ff",
+                      "secondary": "#c7c6ca",
+                      "on-error-container": "#ffdad6",
+                      "inverse-surface": "#e3e2e5",
+                      "on-secondary-fixed-variant": "#46464a",
+                      "surface-bright": "#38393b",
+                      "surface-container-high": "#292a2c",
+                      "on-primary-fixed": "#001a42",
+                      "secondary-fixed": "#e3e2e6",
+                      "surface": "#121315",
+                      "background": "#121315",
+                      "on-background": "#e3e2e5",
+                      "error-container": "#93000a",
+                      "surface-container-highest": "#343537",
+                      "on-surface": "#e3e2e5",
+                      "on-tertiary-fixed": "#1a1c21",
+                      "on-surface-variant": "#c2c6d6",
+                      "tertiary-container": "#8f9097"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "panel-gutter": "16px",
+                      "grid-columns": "12",
+                      "component-padding-y": "8px",
+                      "base": "4px",
+                      "container-margin": "24px",
+                      "component-padding-x": "12px"
+              },
+              "fontFamily": {
+                      "section-title": ["Inter"],
+                      "body-main": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "metadata-caps": ["Inter"]
+              },
+              "fontSize": {
+                      "section-title": ["18px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                      "body-main": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "display-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-md": ["22px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "metadata-caps": ["11px", {"lineHeight": "1.0", "letterSpacing": "0.08em", "fontWeight": "700"}]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface font-body-main antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full h-16 flex justify-between items-center px-container-margin z-50 border-b border-white/5 bg-surface-container-low dark:bg-surface-container-low text-primary dark:text-primary">
+<div class="flex items-center gap-6">
+<div class="text-headline-md font-headline-md font-bold text-on-surface dark:text-on-surface tracking-tight">
+                SIPER Intelligence System
+            </div>
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="bg-surface-container-highest border border-white/5 rounded pl-10 pr-4 py-1.5 text-body-main focus:outline-none focus:border-primary w-64 text-on-surface placeholder:text-on-surface-variant/50" placeholder="Global Search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-200 rounded">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-200 rounded">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors duration-200 rounded">
+<span class="material-symbols-outlined">apps</span>
+</button>
+<div class="h-8 w-8 ml-4 rounded overflow-hidden border border-white/10">
+<img alt="Investigator profile" class="w-full h-full object-cover" data-alt="A clinical, high-contrast portrait of an investigator in profile, rendered in black and white with subtle blue undertones. The lighting is harsh and angular, emphasizing sharp features against a deep, pure black background. The overall aesthetic is severe and analytical, fitting for a secure intelligence dashboard. 80 words." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvGSYrG-xGBp4TLr9c2pLvaEkPfZjB_TuWJvOu8hwUO21BCoFub-5_yLuIBbgtVwTcsztV2CDIrxuGtRt5ZcBroZ7Yo-9K1pMFgE8Qo7HrN__JKOFDeQ15I2PNtNYfYRT3Skpw9DhJnuR7cvH8tAwpyE3lNJYlnjjmwqF_wyKFMsTmjU-cqxrApFozROk-T8id8ll-szMC0vJL4YYjsV0JR3JIELklMypQhY7H3yebnJGCL3_OTl-H0g"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-60 flex flex-col py-4 px-3 z-40 border-r border-white/5 bg-surface-container dark:bg-surface-container text-primary dark:text-primary hidden md:flex">
+<div class="mb-8 px-3">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded border border-white/10 bg-surface-container-highest flex items-center justify-center shrink-0">
+<img alt="Agency emblem" class="w-8 h-8 object-contain opacity-80" data-alt="A stylized, minimalist agency emblem featuring geometric shapes resembling an eagle or shield. The design uses sharp lines and a monochromatic palette of stark white on a deep charcoal background, exuding authority and secrecy. The emblem is clean, modern, and lacks unnecessary details, perfect for a high-security intelligence system logo. 80 words." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATHHk8icmcZCnS4eHeqJFsHSHnbfnULZc4iWkuTf0w4Ntb_nDMkZvRNamePoCe4oe2I7b8MD6Xmlan7cQwZR_8h28GWBUxEOCod6lzNj31u_OgJ-ZeTZ1RvCPopIQ4V5W1PMAdMNJ9sCQXjgDG6SxbgvKzRWP19VrGkXA4TrGqrcuLpPaukW_9Pxb5FW5pJRt5KnCGmk2UmTJapYf_9ryENeWZUaKi24KaFOuX_JkXlh6EkbT0yA3VEQ"/>
+</div>
+<div>
+<h2 class="text-section-title font-section-title text-on-surface leading-tight">Task Force Alpha</h2>
+<p class="text-metadata-caps font-metadata-caps text-on-surface-variant mt-1 text-[10px]">Level 4 Clearance</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">work</span>
+                Cases
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">person_search</span>
+                Entity Search
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+                Graph Explorer
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">description</span>
+                Evidence
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-label-sm font-label-sm bg-primary-container text-on-primary-container transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">analytics</span>
+                Reports
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                Audit Log
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto pt-4 border-t border-white/5 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">contact_support</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-variant transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="pt-16 md:pl-60 min-h-screen">
+<div class="p-container-margin max-w-7xl mx-auto space-y-6">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/5 pb-6">
+<div>
+<h1 class="text-display-lg font-display-lg text-on-surface">Reports</h1>
+<p class="text-body-main font-body-main text-on-surface-variant mt-2 max-w-2xl">Generate evidence-backed investigation reports.</p>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<button class="bg-surface-container-highest border border-white/10 hover:bg-surface-variant text-on-surface px-4 py-2 rounded text-label-sm font-label-sm transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+                        Filters
+                    </button>
+<button class="bg-[#3B82F6] hover:bg-blue-600 text-white px-5 py-2 rounded text-label-sm font-label-sm font-semibold transition-colors shadow-[0_0_15px_rgba(59,130,246,0.3)] flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        Generate Report
+                    </button>
+</div>
+</div>
+<!-- Data Table Container -->
+<div class="bg-surface-container-low border border-white/5 rounded-lg overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-white/10 bg-surface-container-highest/50">
+<th class="py-3 px-4 text-metadata-caps font-metadata-caps text-on-surface-variant whitespace-nowrap">Report ID</th>
+<th class="py-3 px-4 text-metadata-caps font-metadata-caps text-on-surface-variant whitespace-nowrap">Case</th>
+<th class="py-3 px-4 text-metadata-caps font-metadata-caps text-on-surface-variant whitespace-nowrap">Type</th>
+<th class="py-3 px-4 text-metadata-caps font-metadata-caps text-on-surface-variant whitespace-nowrap">Status</th>
+<th class="py-3 px-4 text-metadata-caps font-metadata-caps text-on-surface-variant whitespace-nowrap">Created</th>
+<th class="py-3 px-4 text-metadata-caps font-metadata-caps text-on-surface-variant whitespace-nowrap">Created By</th>
+<th class="py-3 px-4 text-metadata-caps font-metadata-caps text-on-surface-variant whitespace-nowrap text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="text-body-main font-body-main">
+<!-- Row 1 -->
+<tr class="border-b border-white/5 hover:bg-surface-container-highest/30 transition-colors group">
+<td class="py-3 px-4 font-mono text-primary">REP-9421</td>
+<td class="py-3 px-4 text-on-surface">CASE-26189</td>
+<td class="py-3 px-4 text-on-surface-variant">Full Dossier</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-surface-container border border-green-500/30 text-green-400">
+<span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> Finalized
+                                    </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">2023-10-24 14:30</td>
+<td class="py-3 px-4 text-on-surface-variant">Agent K. Vance</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1 opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-white/5 hover:bg-surface-container-highest/30 transition-colors group">
+<td class="py-3 px-4 font-mono text-primary">REP-9422</td>
+<td class="py-3 px-4 text-on-surface">CASE-26190</td>
+<td class="py-3 px-4 text-on-surface-variant">Summary</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-surface-container border border-yellow-500/30 text-yellow-400">
+<span class="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse"></span> Draft
+                                    </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">2023-10-25 09:15</td>
+<td class="py-3 px-4 text-on-surface-variant">Agent M. Rossi</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1 opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-white/5 hover:bg-surface-container-highest/30 transition-colors group">
+<td class="py-3 px-4 font-mono text-primary">REP-9425</td>
+<td class="py-3 px-4 text-on-surface">CASE-26144</td>
+<td class="py-3 px-4 text-on-surface-variant">Financial Audit</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-surface-container border border-blue-500/30 text-blue-400">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> Pending Review
+                                    </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">2023-10-26 11:45</td>
+<td class="py-3 px-4 text-on-surface-variant">Analyst J. Doe</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1 opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="px-4 py-3 border-t border-white/5 bg-surface-container-highest/20 flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant">
+<div>Showing 1 to 3 of 124 entries</div>
+<div class="flex gap-1">
+<button class="p-1 rounded hover:bg-surface-container disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="px-2 py-1 rounded bg-surface-container text-on-surface border border-white/10">1</button>
+<button class="px-2 py-1 rounded hover:bg-surface-container">2</button>
+<button class="px-2 py-1 rounded hover:bg-surface-container">3</button>
+<span class="px-2 py-1">...</span>
+<button class="p-1 rounded hover:bg-surface-container">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

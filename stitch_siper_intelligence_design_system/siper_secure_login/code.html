@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SIPER - Secure Login</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#45474c",
+                    "on-tertiary-fixed": "#1a1c21",
+                    "tertiary-container": "#8f9097",
+                    "surface-bright": "#38393b",
+                    "on-error-container": "#ffdad6",
+                    "surface": "#121315",
+                    "on-surface": "#e3e2e5",
+                    "surface-tint": "#adc6ff",
+                    "on-primary-container": "#00285d",
+                    "primary-fixed-dim": "#adc6ff",
+                    "outline-variant": "#424754",
+                    "on-surface-variant": "#c2c6d6",
+                    "outline": "#8c909f",
+                    "inverse-on-surface": "#303033",
+                    "inverse-primary": "#005ac2",
+                    "surface-container-highest": "#343537",
+                    "tertiary": "#c6c6cd",
+                    "on-primary-fixed-variant": "#004395",
+                    "secondary": "#c7c6ca",
+                    "on-error": "#690005",
+                    "primary": "#adc6ff",
+                    "secondary-fixed": "#e3e2e6",
+                    "tertiary-fixed-dim": "#c6c6cd",
+                    "on-tertiary": "#2e3036",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed": "#1b1b1f",
+                    "on-background": "#e3e2e5",
+                    "on-secondary-container": "#b5b4b9",
+                    "tertiary-fixed": "#e2e2e9",
+                    "surface-container-lowest": "#0d0e10",
+                    "primary-fixed": "#d8e2ff",
+                    "surface-dim": "#121315",
+                    "surface-variant": "#343537",
+                    "inverse-surface": "#e3e2e5",
+                    "error": "#ffb4ab",
+                    "on-secondary": "#2f3033",
+                    "on-secondary-fixed-variant": "#46464a",
+                    "surface-container-low": "#1b1c1e",
+                    "surface-container-high": "#292a2c",
+                    "background": "#121315",
+                    "on-primary-fixed": "#001a42",
+                    "on-tertiary-container": "#282a2f",
+                    "surface-container": "#1f2022",
+                    "secondary-fixed-dim": "#c7c6ca",
+                    "secondary-container": "#46464a",
+                    "primary-container": "#4d8eff",
+                    "on-primary": "#002e6a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-margin": "24px",
+                    "component-padding-y": "8px",
+                    "component-padding-x": "12px",
+                    "panel-gutter": "16px",
+                    "grid-columns": "12",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "display-lg": [
+                            "Inter", "sans-serif"
+                    ],
+                    "headline-md": [
+                            "Inter", "sans-serif"
+                    ],
+                    "body-main": [
+                            "Inter", "sans-serif"
+                    ],
+                    "metadata-caps": [
+                            "Inter", "sans-serif"
+                    ],
+                    "label-sm": [
+                            "Inter", "sans-serif"
+                    ],
+                    "section-title": [
+                            "Inter", "sans-serif"
+                    ]
+            },
+            "fontSize": {
+                    "display-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-md": [
+                            "22px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-main": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "metadata-caps": [
+                            "11px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "letterSpacing": "0.08em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "section-title": [
+                            "18px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "500"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface min-h-screen flex items-center justify-center relative overflow-hidden">
+<!-- Background Visualization Texture -->
+<div class="absolute inset-0 opacity-[0.06] bg-cover bg-center pointer-events-none" data-alt="A highly intricate, abstract network data visualization featuring ultra-thin, precise connecting lines and microscopic glowing nodes spreading across a vast dark canvas. The aesthetic is strictly corporate, military-grade intelligence, and highly secure. The mood is cold, clinical, and authoritative. Lighting is minimal, with soft luminescence emanating solely from the data points against a deep, pure black background, creating a high-end, impenetrable digital atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAhKSlchAnztzvNo1vv7smy8njgMeWo9UDoosAJBrFtMvpztdvqDN4ZfcN0zherag30joVL08vRssvuVP2TdWyCekYXXJ1Zs9e2Ve5QpSrFgrAZzFuvYqJNg9clcuTqLgnydoDS9qK-hSoPBj1LCe_0Eer4CrZEuOuHuKlzu6p2iid2eOpSxGvounHLekUpvSjLfFgbI4gdN_I_XDzPObmCm7mDzOR46Vxu4I6F0v9Rm6NP2oeVzapeeQ')"></div>
+<!-- Login Card -->
+<div class="relative z-10 w-full max-w-md bg-surface border border-white/5 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.5)] p-8">
+<!-- Header -->
+<div class="text-center mb-8">
+<h1 class="font-display-lg text-display-lg font-black text-primary mb-2 tracking-tighter">SIPER</h1>
+<p class="font-body-main text-body-main text-on-surface-variant">Ministry of Home Affairs — Authorized Personnel Only</p>
+</div>
+<!-- Form -->
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="block font-label-sm text-label-sm text-on-surface" for="identifier">Email / Government ID</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">badge</span>
+<input class="w-full bg-surface-container-lowest border border-white/10 rounded-md py-2.5 pl-10 pr-3 text-on-surface font-body-main focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder:text-on-surface-variant/50" id="identifier" placeholder="Enter your credentials" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block font-label-sm text-label-sm text-on-surface" for="password">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">key</span>
+<input class="w-full bg-surface-container-lowest border border-white/10 rounded-md py-2.5 pl-10 pr-3 text-on-surface font-body-main focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder:text-on-surface-variant/50" id="password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full h-[44px] flex items-center justify-center bg-primary-container text-on-primary-container font-label-sm text-label-sm font-bold rounded-md hover:bg-primary-container/90 transition-colors" type="button">
+                Sign In
+            </button>
+</form>
+<!-- Divider -->
+<div class="flex items-center my-6">
+<div class="flex-grow border-t border-white/5"></div>
+<span class="px-4 font-metadata-caps text-metadata-caps text-on-surface-variant">OR</span>
+<div class="flex-grow border-t border-white/5"></div>
+</div>
+<!-- Secondary Action -->
+<button class="w-full h-[44px] flex items-center justify-center bg-transparent border border-white/20 text-on-surface font-label-sm text-label-sm rounded-md hover:bg-white/5 transition-colors gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">fingerprint</span>
+            Sign in with Government ID
+        </button>
+<!-- Footer Trust Indicators -->
+<div class="mt-8 flex flex-col items-center justify-center gap-3 border-t border-white/5 pt-6">
+<span class="font-metadata-caps text-metadata-caps text-error tracking-widest uppercase">Authorized access only</span>
+<div class="flex items-center gap-1.5 text-on-surface-variant bg-surface-container-highest px-3 py-1.5 rounded-full border border-white/5">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-metadata-caps text-metadata-caps">Role-Based Access · Audit Logged</span>
+</div>
+</div>
+</div>
+</body></html>

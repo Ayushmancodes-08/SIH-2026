@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SIPER - Data Ingestion Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-container": "#b5b4b9",
+                        "primary-fixed": "#d8e2ff",
+                        "on-error": "#690005",
+                        "outline-variant": "#424754",
+                        "on-secondary": "#2f3033",
+                        "on-primary": "#002e6a",
+                        "primary-container": "#4d8eff",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-tertiary-fixed-variant": "#45474c",
+                        "surface": "#121315",
+                        "surface-bright": "#38393b",
+                        "tertiary-container": "#8f9097",
+                        "tertiary-fixed-dim": "#c6c6cd",
+                        "on-error-container": "#ffdad6",
+                        "surface-dim": "#121315",
+                        "surface-container-high": "#292a2c",
+                        "surface-variant": "#343537",
+                        "surface-container-low": "#1b1c1e",
+                        "error-container": "#93000a",
+                        "inverse-on-surface": "#303033",
+                        "on-primary-container": "#00285d",
+                        "inverse-primary": "#005ac2",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-background": "#e3e2e5",
+                        "secondary-fixed": "#e3e2e6",
+                        "inverse-surface": "#e3e2e5",
+                        "surface-container-lowest": "#0d0e10",
+                        "secondary-fixed-dim": "#c7c6ca",
+                        "outline": "#8c909f",
+                        "on-surface": "#e3e2e5",
+                        "primary": "#adc6ff",
+                        "tertiary-fixed": "#e2e2e9",
+                        "on-primary-fixed": "#001a42",
+                        "on-tertiary-container": "#282a2f",
+                        "secondary": "#c7c6ca",
+                        "on-tertiary-fixed": "#1a1c21",
+                        "surface-container": "#1f2022",
+                        "on-tertiary": "#2e3036",
+                        "on-surface-variant": "#c2c6d6",
+                        "surface-container-highest": "#343537",
+                        "secondary-container": "#46464a",
+                        "background": "#121315",
+                        "on-secondary-fixed-variant": "#46464a",
+                        "surface-tint": "#adc6ff",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed": "#1b1b1f",
+                        "tertiary": "#c6c6cd"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "container-margin": "24px",
+                        "component-padding-x": "12px",
+                        "base": "4px",
+                        "grid-columns": "12",
+                        "component-padding-y": "8px",
+                        "panel-gutter": "16px"
+                    },
+                    fontFamily: {
+                        "body-main": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "metadata-caps": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "section-title": ["Inter"]
+                    },
+                    fontSize: {
+                        "body-main": ["14px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "label-sm": ["12px", { lineHeight: "1.2", fontWeight: "500" }],
+                        "display-lg": ["32px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        "metadata-caps": ["11px", { lineHeight: "1.0", letterSpacing: "0.08em", fontWeight: "700" }],
+                        "headline-md": ["22px", { lineHeight: "1.4", fontWeight: "600" }],
+                        "section-title": ["18px", { lineHeight: "1.4", fontWeight: "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0A0B0D; color: #e3e2e5; }
+        .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .entity-card { border-top: 2px solid #3B82F6; background-color: #141518; border-bottom: 1px solid rgba(255, 255, 255, 0.05); border-left: 1px solid rgba(255, 255, 255, 0.05); border-right: 1px solid rgba(255, 255, 255, 0.05); }
+        .table-row { border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .table-row:hover { background-color: #191B20; }
+        .btn-primary { background-color: #3B82F6; color: white; border-radius: 0.25rem; }
+        .btn-primary:hover { background-color: #2563EB; }
+        .btn-ghost { border: 1px solid rgba(255, 255, 255, 0.2); background: transparent; color: #e3e2e5; border-radius: 0.25rem; }
+        .btn-ghost:hover { background: rgba(255, 255, 255, 0.05); }
+    </style>
+</head>
+<body class="font-body-main antialiased text-body-main min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-panel-gutter h-16 border-b border-white/5 bg-surface-container-low">
+<div class="flex items-center gap-8">
+<div class="font-display-lg text-display-lg font-black tracking-tighter text-primary dark:text-primary">SIPER</div>
+<nav class="hidden md:flex gap-6">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-white/5 transition-colors px-2 py-4 h-full flex items-center" href="#">Dashboard</a>
+<a class="text-primary dark:text-primary border-b-2 border-primary pb-1 font-bold hover:bg-white/5 transition-colors px-2 py-4 h-full flex items-center" href="#">Cases</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-white/5 transition-colors px-2 py-4 h-full flex items-center" href="#">Graph Explorer</a>
+</nav>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<button class="p-2 hover:bg-white/5 rounded-full transition-colors"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span></button>
+<button class="p-2 hover:bg-white/5 rounded-full transition-colors"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">terminal</span></button>
+<button class="p-2 hover:bg-white/5 rounded-full transition-colors"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span></button>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 bottom-0 w-[240px] z-40 hidden md:flex flex-col py-4 px-2 border-r border-white/5 bg-surface-container-low">
+<div class="mb-8 px-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center border border-white/10 overflow-hidden">
+<img alt="System Operator" class="object-cover w-full h-full" data-alt="A clinical, high-contrast avatar placeholder image representing a system operator in a secure environment. Monochromatic dark grey tones with subtle digital static overlay. Strict, authoritative mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuJO-RVugxWDaH3DaqDxkYcIGWpvw2ZsfK9HZ4NtM-3Aes9t7oSlp5ttZloriHlK6TKiZSqaSI07jBgV7BY9KT3kgvZ5Lb3jIJsNWW0Ph2Vy4YBX5UjxemVAEyJaMkCvc4y8FuuIF7S31I3dwBUeGGgPK4GcO-fFVwdbOVgWgZuVkFPKSwRx4jnLyAdOC80rTmvfla1oIjbvHHHzz__BZupDcMzKdsFBaoxLOTnJSDN1AT_ryW_cB1NA"/>
+</div>
+<div>
+<div class="font-label-sm text-label-sm font-semibold text-on-surface">Operator-01</div>
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant">Field Intelligence</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all rounded-lg" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-label-sm text-label-sm">Dashboard</span></a>
+<a class="flex items-center gap-3 px-4 py-2.5 bg-primary-container text-on-primary-container rounded-lg font-bold transition-all" href="#"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">folder_shared</span><span class="font-label-sm text-label-sm">Cases</span></a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all rounded-lg" href="#"><span class="material-symbols-outlined text-[20px]">person_search</span><span class="font-label-sm text-label-sm">Entity Search</span></a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all rounded-lg" href="#"><span class="material-symbols-outlined text-[20px]">hub</span><span class="font-label-sm text-label-sm">Graph Explorer</span></a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all rounded-lg" href="#"><span class="material-symbols-outlined text-[20px]">assessment</span><span class="font-label-sm text-label-sm">Reports</span></a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all rounded-lg" href="#"><span class="material-symbols-outlined text-[20px]">history_edu</span><span class="font-label-sm text-label-sm">Audit Log</span></a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all rounded-lg" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-label-sm text-label-sm">Settings</span></a>
+</nav>
+<div class="mt-auto border-t border-white/5 pt-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface transition-all rounded-lg" href="#"><span class="material-symbols-outlined text-[18px]">contact_support</span><span class="font-label-sm text-label-sm">Support</span></a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface transition-all rounded-lg" href="#"><span class="material-symbols-outlined text-[18px]">help_outline</span><span class="font-label-sm text-label-sm">Help</span></a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-[240px] mt-16 p-container-margin flex-1 flex flex-col gap-6">
+<!-- Header & Context -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-white/5 pb-4">
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface">Data Ingestion</h1>
+<p class="text-on-surface-variant font-label-sm text-label-sm mt-1">Import structured and unstructured intelligence for analysis.</p>
+</div>
+<div class="inline-flex items-center gap-2 bg-surface-container-high border border-white/10 px-3 py-1.5 rounded">
+<span class="material-symbols-outlined text-[16px] text-primary">gavel</span>
+<span class="font-metadata-caps text-metadata-caps text-on-surface tracking-wider">CASE-26189: Organized Network Investigation</span>
+</div>
+</div>
+<!-- Data Source Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Source Card 1 -->
+<div class="entity-card p-4 rounded-lg flex flex-col h-full hover:bg-surface-container-high transition-colors">
+<div class="flex justify-between items-start mb-3">
+<div class="p-2 bg-surface rounded"><span class="material-symbols-outlined text-on-surface">description</span></div>
+<span class="font-metadata-caps text-metadata-caps text-on-surface-variant px-2 py-1 bg-surface-container border border-white/5 rounded">PDF, DOCX</span>
+</div>
+<h3 class="font-section-title text-section-title text-on-surface mb-1">FIR / Police Report</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-4 flex-1">Extract entities and narratives from official reports.</p>
+<button class="btn-ghost w-full py-2 font-label-sm text-label-sm">Import</button>
+</div>
+<!-- Source Card 2 -->
+<div class="entity-card p-4 rounded-lg flex flex-col h-full hover:bg-surface-container-high transition-colors">
+<div class="flex justify-between items-start mb-3">
+<div class="p-2 bg-surface rounded"><span class="material-symbols-outlined text-on-surface">call_log</span></div>
+<span class="font-metadata-caps text-metadata-caps text-on-surface-variant px-2 py-1 bg-surface-container border border-white/5 rounded">CSV, XLSX</span>
+</div>
+<h3 class="font-section-title text-section-title text-on-surface mb-1">CDR</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-4 flex-1">Call Detail Records for network linkage.</p>
+<button class="btn-ghost w-full py-2 font-label-sm text-label-sm">Import</button>
+</div>
+<!-- Source Card 3 -->
+<div class="entity-card p-4 rounded-lg flex flex-col h-full hover:bg-surface-container-high transition-colors">
+<div class="flex justify-between items-start mb-3">
+<div class="p-2 bg-surface rounded"><span class="material-symbols-outlined text-on-surface">account_balance</span></div>
+<span class="font-metadata-caps text-metadata-caps text-on-surface-variant px-2 py-1 bg-surface-container border border-white/5 rounded">CSV, XLSX</span>
+</div>
+<h3 class="font-section-title text-section-title text-on-surface mb-1">Financial Records</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-4 flex-1">Transaction logs and asset tracking.</p>
+<button class="btn-ghost w-full py-2 font-label-sm text-label-sm">Import</button>
+</div>
+<!-- Source Card 4 -->
+<div class="entity-card p-4 rounded-lg flex flex-col h-full hover:bg-surface-container-high transition-colors">
+<div class="flex justify-between items-start mb-3">
+<div class="p-2 bg-surface rounded"><span class="material-symbols-outlined text-on-surface">videocam</span></div>
+<span class="font-metadata-caps text-metadata-caps text-on-surface-variant px-2 py-1 bg-surface-container border border-white/5 rounded">MP4, JPG</span>
+</div>
+<h3 class="font-section-title text-section-title text-on-surface mb-1">Surveillance</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-4 flex-1">Media and observational logs.</p>
+<button class="btn-ghost w-full py-2 font-label-sm text-label-sm">Import</button>
+</div>
+</div>
+<!-- Layout Grid for Upload & Table -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-2">
+<!-- Upload Area (Left Col) -->
+<div class="lg:col-span-4 flex flex-col gap-4">
+<div class="border-2 border-dashed border-white/10 rounded-lg bg-surface-container-low p-8 flex flex-col items-center justify-center text-center h-full hover:border-primary/50 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-[48px] text-on-surface-variant group-hover:text-primary transition-colors mb-4">cloud_upload</span>
+<h3 class="font-section-title text-section-title text-on-surface mb-2">Drop files here or browse from device</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-6">Supported formats: PDF, DOCX, CSV, XLSX, TXT, JSON</p>
+<button class="btn-ghost px-6 py-2 font-label-sm text-label-sm">Select Files</button>
+</div>
+<div class="bg-surface-container-low border border-white/5 p-4 rounded-lg flex gap-3 items-start">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">shield</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Files are processed within the authorized investigation workspace. Strict access logging is active.</p>
+</div>
+</div>
+<!-- Processing Table (Right Col) -->
+<div class="lg:col-span-8 bg-surface-container-low border border-white/5 rounded-lg overflow-hidden flex flex-col">
+<div class="px-4 py-3 border-b border-white/5 flex justify-between items-center bg-surface-container">
+<h3 class="font-section-title text-section-title text-on-surface">Processing Queue</h3>
+<div class="flex gap-2">
+<button class="p-1 hover:bg-white/5 rounded text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">filter_list</span></button>
+<button class="p-1 hover:bg-white/5 rounded text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">refresh</span></button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-white/10 text-on-surface-variant font-metadata-caps text-metadata-caps bg-surface-container">
+<th class="py-3 px-4 font-semibold">File</th>
+<th class="py-3 px-4 font-semibold">Source</th>
+<th class="py-3 px-4 font-semibold">Records</th>
+<th class="py-3 px-4 font-semibold">Status</th>
+<th class="py-3 px-4 font-semibold">Entities</th>
+<th class="py-3 px-4 font-semibold">Relationships</th>
+<th class="py-3 px-4 font-semibold">Uploaded</th>
+<th class="py-3 px-4 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-main text-body-main text-on-surface">
+<!-- Row 1: Completed -->
+<tr class="table-row">
+<td class="py-3 px-4 flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-on-surface-variant">picture_as_pdf</span>FIR_1029.pdf</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 bg-surface rounded text-xs border border-white/5">FIR</span></td>
+<td class="py-3 px-4">1 document</td>
+<td class="py-3 px-4"><span class="inline-flex items-center gap-1 text-primary"><span class="material-symbols-outlined text-[14px]">check_circle</span>Processed</span></td>
+<td class="py-3 px-4">27</td>
+<td class="py-3 px-4">41</td>
+<td class="py-3 px-4 text-on-surface-variant text-xs">2 min ago</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+</td>
+</tr>
+<!-- Row 2: Processing -->
+<tr class="table-row bg-surface-container-highest/20">
+<td class="py-3 px-4 flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-on-surface-variant">grid_on</span>CDR_AUG.csv</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 bg-surface rounded text-xs border border-white/5">CDR</span></td>
+<td class="py-3 px-4">1,284 records</td>
+<td class="py-3 px-4">
+<div class="flex flex-col gap-1 w-24">
+<span class="inline-flex items-center gap-1 text-on-surface-variant text-xs"><span class="material-symbols-outlined text-[12px] animate-spin">sync</span>Processing</span>
+<div class="w-full bg-surface-variant rounded-full h-1"><div class="bg-primary h-1 rounded-full" style="width: 45%"></div></div>
+</div>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">-</td>
+<td class="py-3 px-4 text-on-surface-variant">-</td>
+<td class="py-3 px-4 text-on-surface-variant text-xs">Just now</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant hover:text-error"><span class="material-symbols-outlined text-[18px]">cancel</span></button>
+</td>
+</tr>
+<!-- Row 3: Queued -->
+<tr class="table-row text-on-surface-variant">
+<td class="py-3 px-4 flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">grid_on</span>FINANCE_01.csv</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 bg-surface rounded text-xs border border-white/5">Financial</span></td>
+<td class="py-3 px-4">562 records</td>
+<td class="py-3 px-4"><span class="inline-flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">hourglass_empty</span>Queued</span></td>
+<td class="py-3 px-4">-</td>
+<td class="py-3 px-4">-</td>
+<td class="py-3 px-4 text-xs">5 min ago</td>
+<td class="py-3 px-4 text-right">
+<button class="hover:text-on-surface"><span class="material-symbols-outlined text-[18px]">more_vert</span></button>
+</td>
+</tr>
+<!-- Row 4: Failed -->
+<tr class="table-row">
+<td class="py-3 px-4 flex items-center gap-2 text-on-error"><span class="material-symbols-outlined text-[16px]">description</span>LOGS_INVALID.txt</td>
+<td class="py-3 px-4"><span class="px-2 py-0.5 bg-surface rounded text-xs border border-white/5">Other</span></td>
+<td class="py-3 px-4 text-on-surface-variant">-</td>
+<td class="py-3 px-4"><span class="inline-flex items-center gap-1 text-on-error"><span class="material-symbols-outlined text-[14px]">error</span>Failed</span></td>
+<td class="py-3 px-4 text-on-surface-variant">-</td>
+<td class="py-3 px-4 text-on-surface-variant">-</td>
+<td class="py-3 px-4 text-on-surface-variant text-xs">10 min ago</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant hover:text-on-surface flex items-center gap-1 ml-auto text-xs"><span class="material-symbols-outlined text-[14px]">refresh</span> Retry</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="mt-auto pt-6 border-t border-white/5 flex justify-end">
+<button class="btn-primary px-8 py-3 font-headline-md text-headline-md flex items-center gap-2 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+<span class="material-symbols-outlined">psychology</span>
+                Start AI Analysis
+            </button>
+</div>
+</main>
+</body></html>

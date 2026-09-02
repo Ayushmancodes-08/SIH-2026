@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SIPER | New Investigation: Case Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed": "#1a1c21",
+                      "primary": "#adc6ff",
+                      "surface-bright": "#38393b",
+                      "on-error": "#690005",
+                      "surface": "#121315",
+                      "on-secondary-fixed-variant": "#46464a",
+                      "surface-tint": "#adc6ff",
+                      "on-surface": "#e3e2e5",
+                      "on-tertiary-container": "#282a2f",
+                      "surface-container-high": "#292a2c",
+                      "primary-fixed-dim": "#adc6ff",
+                      "on-surface-variant": "#c2c6d6",
+                      "tertiary": "#c6c6cd",
+                      "on-secondary": "#2f3033",
+                      "secondary-container": "#46464a",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary-container": "#b5b4b9",
+                      "inverse-on-surface": "#303033",
+                      "tertiary-container": "#8f9097",
+                      "outline-variant": "#424754",
+                      "secondary-fixed-dim": "#c7c6ca",
+                      "background": "#121315",
+                      "surface-container-highest": "#343537",
+                      "on-secondary-fixed": "#1b1b1f",
+                      "surface-variant": "#343537",
+                      "primary-container": "#4d8eff",
+                      "tertiary-fixed": "#e2e2e9",
+                      "primary-fixed": "#d8e2ff",
+                      "surface-container": "#1f2022",
+                      "on-tertiary": "#2e3036",
+                      "inverse-primary": "#005ac2",
+                      "on-primary": "#002e6a",
+                      "outline": "#8c909f",
+                      "on-tertiary-fixed-variant": "#45474c",
+                      "on-primary-container": "#00285d",
+                      "secondary-fixed": "#e3e2e6",
+                      "error-container": "#93000a",
+                      "surface-dim": "#121315",
+                      "on-primary-fixed": "#001a42",
+                      "tertiary-fixed-dim": "#c6c6cd",
+                      "on-primary-fixed-variant": "#004395",
+                      "secondary": "#c7c6ca",
+                      "surface-container-lowest": "#0d0e10",
+                      "surface-container-low": "#1b1c1e",
+                      "error": "#ffb4ab",
+                      "inverse-surface": "#e3e2e5",
+                      "on-background": "#e3e2e5"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "container-margin": "24px",
+                      "component-padding-x": "12px",
+                      "component-padding-y": "8px",
+                      "grid-columns": "12",
+                      "panel-gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-main": [
+                              "Inter"
+                      ],
+                      "section-title": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "metadata-caps": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-main": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "section-title": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "22px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "metadata-caps": [
+                              "11px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.08em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 1,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        /* Subdued scrollbar for dark UI */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121315; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #343537; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #424754; 
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-main antialiased h-screen overflow-hidden flex flex-col">
+<!-- TopNavBar: Dimmed state as per prompt -->
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-panel-gutter h-16 bg-surface dark:bg-surface border-b border-white/5 opacity-50 pointer-events-none">
+<div class="flex items-center gap-6">
+<div class="font-display-lg text-display-lg font-black tracking-tighter text-primary dark:text-primary">
+                SIPER
+            </div>
+<nav class="hidden md:flex gap-6 h-full items-center">
+<a class="text-on-surface-variant dark:text-on-surface-variant text-label-sm font-label-sm" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant text-label-sm font-label-sm" href="#">Cases</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant text-label-sm font-label-sm" href="#">Graph Explorer</a>
+</nav>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+<span class="material-symbols-outlined">terminal</span>
+<span class="material-symbols-outlined">account_circle</span>
+</div>
+</header>
+<div class="flex flex-1 pt-16">
+<!-- SideNavBar: Dimmed state -->
+<aside class="fixed left-0 top-16 bottom-0 w-[240px] z-40 flex flex-col py-4 px-2 bg-surface-container-low dark:bg-surface-container-low border-r border-white/5 opacity-50 pointer-events-none hidden md:flex">
+<div class="mb-8 px-2 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">engineering</span>
+</div>
+<div>
+<div class="font-label-sm text-label-sm font-bold text-on-surface">Operator-01</div>
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant">Field Intelligence</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface rounded-lg">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</div>
+<!-- Cases would normally be active, but entire nav is dimmed -->
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface rounded-lg">
+<span class="material-symbols-outlined">folder_shared</span>
+<span class="font-label-sm text-label-sm">Cases</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface rounded-lg">
+<span class="material-symbols-outlined">person_search</span>
+<span class="font-label-sm text-label-sm">Entity Search</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface rounded-lg">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-label-sm text-label-sm">Graph Explorer</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface rounded-lg">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-label-sm text-label-sm">Reports</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface rounded-lg">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-label-sm text-label-sm">Audit Log</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface rounded-lg">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</div>
+</nav>
+<div class="mt-auto flex flex-col gap-1 pt-4 border-t border-white/5">
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface rounded-lg">
+<span class="material-symbols-outlined">contact_support</span>
+<span class="font-label-sm text-label-sm">Support</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface rounded-lg">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="font-label-sm text-label-sm">Help</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-[240px] overflow-y-auto p-container-margin relative flex justify-center items-start">
+<!-- Setup Container -->
+<div class="w-full max-w-4xl bg-[#141518] border border-white/5 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.5)] flex flex-col mt-4">
+<!-- Header & Step Indicator -->
+<div class="p-6 border-b border-white/5">
+<h1 class="font-headline-md text-headline-md text-on-surface mb-6">New Investigation</h1>
+<div class="flex items-center justify-between relative">
+<!-- Progress Line -->
+<div class="absolute top-1/2 left-0 right-0 h-px bg-white/10 -z-10 -translate-y-1/2"></div>
+<!-- Step 1 (Active) -->
+<div class="flex flex-col items-center gap-2 bg-[#141518] px-2 z-10">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center border-2 border-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">Case Details</span>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center gap-2 bg-[#141518] px-2 z-10">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center border border-white/10">
+<span class="font-label-sm text-label-sm">2</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Data Sources</span>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center gap-2 bg-[#141518] px-2 z-10">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center border border-white/10">
+<span class="font-label-sm text-label-sm">3</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Initial Analysis</span>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center gap-2 bg-[#141518] px-2 z-10">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center border border-white/10">
+<span class="font-label-sm text-label-sm">4</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Review</span>
+</div>
+</div>
+</div>
+<!-- Form Body -->
+<div class="p-6 flex flex-col gap-6">
+<!-- Case Name -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface">Case Name</label>
+<input class="bg-[#0A0B0D] border border-white/10 rounded text-on-surface px-3 py-2 font-body-main text-body-main focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-on-surface-variant" type="text" value="Organized Network Investigation"/>
+</div>
+<!-- Case Description -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface">Case Description</label>
+<textarea class="bg-[#0A0B0D] border border-white/10 rounded text-on-surface px-3 py-2 font-body-main text-body-main focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none placeholder:text-on-surface-variant" rows="3">Comprehensive analysis of suspected shell company networks...</textarea>
+</div>
+<!-- Priority Level -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface">Priority Level</label>
+<div class="flex bg-[#0A0B0D] border border-white/10 rounded p-1">
+<button class="flex-1 py-1.5 rounded font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors">Low</button>
+<button class="flex-1 py-1.5 rounded font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors border-l border-white/5">Medium</button>
+<button class="flex-1 py-1.5 rounded font-label-sm text-label-sm bg-error-container text-on-error-container border border-error/50 shadow-sm transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+                                High
+                            </button>
+</div>
+</div>
+<!-- Row for Assigned Investigator & Tags -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Assigned Investigator -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface">Assigned Investigator</label>
+<div class="relative">
+<select class="w-full bg-[#0A0B0D] border border-white/10 rounded text-on-surface px-3 py-2 font-body-main text-body-main focus:border-primary focus:ring-1 focus:ring-primary outline-none appearance-none">
+<option>Investigator-7 (Active Ops)</option>
+<option>Investigator-2 (Intel)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">arrow_drop_down</span>
+</div>
+</div>
+<!-- Tags -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface">Tags</label>
+<div class="flex flex-wrap gap-2 p-2 bg-[#0A0B0D] border border-white/10 rounded min-h-[42px] items-center">
+<div class="bg-surface-container-high border border-white/10 rounded px-2 py-1 flex items-center gap-1">
+<span class="font-label-sm text-label-sm text-on-surface">Narcotics</span>
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant hover:text-on-surface cursor-pointer">close</span>
+</div>
+<div class="bg-surface-container-high border border-white/10 rounded px-2 py-1 flex items-center gap-1">
+<span class="font-label-sm text-label-sm text-on-surface">Money Laundering</span>
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant hover:text-on-surface cursor-pointer">close</span>
+</div>
+<input class="bg-transparent border-none outline-none text-on-surface font-body-main text-body-main flex-1 min-w-[100px] p-0 focus:ring-0 placeholder:text-on-surface-variant/50" placeholder="Add tag..." type="text"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="p-6 border-t border-white/5 flex items-center justify-end gap-4 bg-surface-container-lowest/50 rounded-b-xl">
+<button class="px-4 py-2 rounded font-label-sm text-label-sm text-on-surface border border-white/20 hover:bg-white/5 transition-colors">
+                        Cancel
+                    </button>
+<button class="px-4 py-2 rounded font-label-sm text-label-sm bg-[#3B82F6] text-white hover:bg-blue-600 transition-colors flex items-center gap-2 shadow-sm">
+                        Continue to Data Sources
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

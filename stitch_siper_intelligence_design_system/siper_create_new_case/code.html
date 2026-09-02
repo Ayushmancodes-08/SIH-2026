@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SIPER - Create New Case</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#b5b4b9",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#adc6ff",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-container-low": "#1b1c1e",
+                        "on-secondary-fixed": "#1b1b1f",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#c6c6cd",
+                        "surface-variant": "#343537",
+                        "surface": "#121315",
+                        "surface-dim": "#121315",
+                        "secondary": "#c7c6ca",
+                        "outline": "#8c909f",
+                        "on-primary-fixed-variant": "#004395",
+                        "tertiary-container": "#8f9097",
+                        "outline-variant": "#424754",
+                        "on-tertiary-container": "#282a2f",
+                        "on-surface": "#e3e2e5",
+                        "primary": "#adc6ff",
+                        "surface-container-highest": "#343537",
+                        "surface-container-high": "#292a2c",
+                        "on-tertiary-fixed": "#1a1c21",
+                        "on-primary": "#002e6a",
+                        "on-tertiary": "#2e3036",
+                        "on-primary-fixed": "#001a42",
+                        "inverse-surface": "#e3e2e5",
+                        "secondary-fixed-dim": "#c7c6ca",
+                        "tertiary": "#c6c6cd",
+                        "primary-container": "#4d8eff",
+                        "on-surface-variant": "#c2c6d6",
+                        "on-primary-container": "#00285d",
+                        "background": "#121315",
+                        "inverse-on-surface": "#303033",
+                        "on-background": "#e3e2e5",
+                        "on-secondary": "#2f3033",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container-lowest": "#0d0e10",
+                        "on-tertiary-fixed-variant": "#45474c",
+                        "tertiary-fixed": "#e2e2e9",
+                        "error": "#ffb4ab",
+                        "surface-container": "#1f2022",
+                        "secondary-container": "#46464a",
+                        "secondary-fixed": "#e3e2e6",
+                        "surface-bright": "#38393b",
+                        "on-error": "#690005",
+                        "inverse-primary": "#005ac2",
+                        "on-secondary-fixed-variant": "#46464a",
+                        "case-blue": "#3B82F6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "component-padding-x": "12px",
+                        "component-padding-y": "8px",
+                        "container-margin": "24px",
+                        "panel-gutter": "16px",
+                        "grid-columns": "12",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "section-title": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "metadata-caps": ["Inter"],
+                        "body-main": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "section-title": ["18px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "headline-md": ["22px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "metadata-caps": ["11px", { "lineHeight": "1.0", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                        "body-main": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-modal {
+            background: rgba(20, 21, 24, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-screen w-screen overflow-hidden flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- Blurred Background (Simulated Cases Index) -->
+<div class="absolute inset-0 z-0 flex flex-col blur-sm opacity-50 pointer-events-none">
+<!-- TopNavBar (Suppressed in DOM hierarchy for layout, represented visually) -->
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-panel-gutter h-16 bg-surface dark:bg-surface border-b border-white/5 bg-surface-container-low">
+<div class="flex items-center gap-6">
+<span class="font-display-lg text-display-lg font-black tracking-tighter text-primary dark:text-primary">SIPER</span>
+<nav class="hidden md:flex gap-4">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-white/5 transition-colors px-3 py-2 rounded-md font-headline-md text-headline-md" href="#">Dashboard</a>
+<a class="text-primary dark:text-primary border-b-2 border-primary pb-1 px-3 py-2 font-headline-md text-headline-md" href="#">Cases</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-white/5 transition-colors px-3 py-2 rounded-md font-headline-md text-headline-md" href="#">Graph Explorer</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface hover:bg-white/5 rounded-full"><span class="material-symbols-outlined">notifications</span></button>
+<button class="p-2 text-on-surface hover:bg-white/5 rounded-full"><span class="material-symbols-outlined">terminal</span></button>
+<button class="p-2 text-on-surface hover:bg-white/5 rounded-full"><span class="material-symbols-outlined">account_circle</span></button>
+</div>
+</header>
+<!-- SideNavBar (Simulated) -->
+<aside class="fixed left-0 top-16 bottom-0 w-[240px] z-40 flex flex-col py-4 px-2 bg-surface-container-low dark:bg-surface-container-low border-r border-white/5 bg-surface-container-low">
+<div class="mb-8 px-4 flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden border border-white/10">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">person</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md font-bold text-primary">Operator-01</div>
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant">Field Intelligence</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-label-sm text-label-sm" href="#"><span class="material-symbols-outlined">dashboard</span>Dashboard</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg bg-primary-container text-on-primary-container font-bold font-label-sm text-label-sm" href="#"><span class="material-symbols-outlined">folder_shared</span>Cases</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-label-sm text-label-sm" href="#"><span class="material-symbols-outlined">person_search</span>Entity Search</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-label-sm text-label-sm" href="#"><span class="material-symbols-outlined">hub</span>Graph Explorer</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-label-sm text-label-sm" href="#"><span class="material-symbols-outlined">assessment</span>Reports</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-label-sm text-label-sm" href="#"><span class="material-symbols-outlined">history_edu</span>Audit Log</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all font-label-sm text-label-sm" href="#"><span class="material-symbols-outlined">settings</span>Settings</a>
+</nav>
+</aside>
+<!-- Main Content Area (Simulated) -->
+<main class="ml-[240px] mt-16 p-container-margin flex-1 flex flex-col gap-6 bg-[#0A0B0D]">
+<div class="flex items-center justify-between border-b border-white/5 pb-4">
+<h1 class="font-headline-md text-headline-md">Active Investigations</h1>
+<button class="bg-case-blue text-white px-4 py-2 rounded flex items-center gap-2 font-label-sm text-label-sm hover:bg-blue-600 transition"><span class="material-symbols-outlined text-sm">add</span> New Case</button>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<!-- Dummy Cards -->
+<div class="bg-[#141518] border-t-2 border-[#10B981] border-x border-b border-white/5 rounded p-4 flex flex-col gap-2">
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant">CASE-2023-881</div>
+<div class="font-headline-md text-headline-md text-sm">Operation Phantom</div>
+</div>
+<div class="bg-[#141518] border-t-2 border-[#EF4444] border-x border-b border-white/5 rounded p-4 flex flex-col gap-2">
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant">CASE-2023-892</div>
+<div class="font-headline-md text-headline-md text-sm">Syndicate X</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Modal Overlay Container -->
+<div class="absolute inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+<!-- Glassmorphic Modal -->
+<div class="glass-modal w-full max-w-[600px] rounded-lg flex flex-col overflow-hidden relative">
+<!-- Header -->
+<div class="px-6 py-5 border-b border-white/5 flex items-center justify-between bg-surface-container-low/50">
+<h2 class="font-headline-md text-headline-md text-on-surface">Create New Investigation</h2>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+<!-- Body -->
+<div class="px-6 py-6 flex flex-col gap-6 overflow-y-auto max-h-[70vh]">
+<!-- Row 1: Title & ID -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="md:col-span-2 flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="case_title">Case Title</label>
+<input class="bg-[#0A0B0D] border border-white/10 rounded px-3 py-2 font-body-main text-body-main text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-full transition-all placeholder:text-surface-variant" id="case_title" placeholder="Enter operation codename or title" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="case_id">Case ID</label>
+<input class="bg-[#0A0B0D]/50 border border-white/5 rounded px-3 py-2 font-body-main text-body-main text-on-surface-variant cursor-not-allowed w-full font-mono text-xs" disabled="" id="case_id" type="text" value="CASE-2023-904"/>
+</div>
+</div>
+<!-- Row 2: Description -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="case_desc">Description / Initial Intelligence</label>
+<textarea class="bg-[#0A0B0D] border border-white/10 rounded px-3 py-2 font-body-main text-body-main text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-full transition-all placeholder:text-surface-variant resize-none" id="case_desc" placeholder="Summarize the initial intelligence report..." rows="4"></textarea>
+</div>
+<!-- Row 3: Priority & Investigator -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Segmented Control for Priority -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Priority Level</label>
+<div class="flex bg-[#0A0B0D] rounded border border-white/10 p-1">
+<button class="flex-1 py-1.5 text-center rounded bg-surface-variant text-on-surface font-label-sm text-label-sm transition-colors border border-white/5">Low</button>
+<button class="flex-1 py-1.5 text-center rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors border border-transparent hover:border-white/5">Medium</button>
+<button class="flex-1 py-1.5 text-center rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors border border-transparent hover:border-white/5">High</button>
+</div>
+</div>
+<!-- Dropdown for Investigator -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="investigator">Assigned Lead</label>
+<div class="relative">
+<select class="appearance-none bg-[#0A0B0D] border border-white/10 rounded px-3 py-2 pr-8 font-body-main text-body-main text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-full transition-all" id="investigator">
+<option disabled="" selected="" value="">Select Investigator...</option>
+<option value="op-01">Operator-01 (Current)</option>
+<option value="an-44">Analyst-44</option>
+<option value="ta-09">Tactical-09</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-sm">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<!-- Row 4: Tags -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="case_tags">Entity Tags</label>
+<div class="bg-[#0A0B0D] border border-white/10 rounded px-3 py-2 flex items-center gap-2 flex-wrap min-h-[42px] focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<div class="flex items-center gap-1 bg-surface-variant px-2 py-0.5 rounded text-xs font-label-sm text-label-sm border border-white/10">
+<span>Narcotics</span>
+<span class="material-symbols-outlined text-[10px] cursor-pointer hover:text-error transition-colors">close</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-variant px-2 py-0.5 rounded text-xs font-label-sm text-label-sm border border-white/10">
+<span>Money Laundering</span>
+<span class="material-symbols-outlined text-[10px] cursor-pointer hover:text-error transition-colors">close</span>
+</div>
+<input class="bg-transparent border-none outline-none font-body-main text-body-main text-on-surface flex-1 min-w-[120px] p-0 placeholder:text-surface-variant" id="case_tags" placeholder="Add tags..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="px-6 py-4 border-t border-white/5 bg-surface-container-lowest/50 flex items-center justify-end gap-3">
+<button class="px-4 py-2 rounded border border-white/20 bg-transparent text-on-surface font-label-sm text-label-sm hover:bg-white/5 transition-colors">Cancel</button>
+<button class="px-4 py-2 rounded bg-case-blue text-white font-label-sm text-label-sm hover:bg-blue-600 transition-colors border border-transparent flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+                    Create Case
+                </button>
+</div>
+</div>
+</div>
+</body></html>

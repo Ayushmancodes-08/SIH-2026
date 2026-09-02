@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SIPER - Cases</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#b5b4b9",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#adc6ff",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-container-low": "#1b1c1e",
+                        "on-secondary-fixed": "#1b1b1f",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#c6c6cd",
+                        "surface-variant": "#343537",
+                        "surface": "#121315",
+                        "surface-dim": "#121315",
+                        "secondary": "#c7c6ca",
+                        "outline": "#8c909f",
+                        "on-primary-fixed-variant": "#004395",
+                        "tertiary-container": "#8f9097",
+                        "outline-variant": "#424754",
+                        "on-tertiary-container": "#282a2f",
+                        "on-surface": "#e3e2e5",
+                        "primary": "#adc6ff",
+                        "surface-container-highest": "#343537",
+                        "surface-container-high": "#292a2c",
+                        "on-tertiary-fixed": "#1a1c21",
+                        "on-primary": "#002e6a",
+                        "on-tertiary": "#2e3036",
+                        "on-primary-fixed": "#001a42",
+                        "inverse-surface": "#e3e2e5",
+                        "secondary-fixed-dim": "#c7c6ca",
+                        "tertiary": "#c6c6cd",
+                        "primary-container": "#4d8eff",
+                        "on-surface-variant": "#c2c6d6",
+                        "on-primary-container": "#00285d",
+                        "background": "#121315",
+                        "inverse-on-surface": "#303033",
+                        "on-background": "#e3e2e5",
+                        "on-secondary": "#2f3033",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container-lowest": "#0d0e10",
+                        "on-tertiary-fixed-variant": "#45474c",
+                        "tertiary-fixed": "#e2e2e9",
+                        "error": "#ffb4ab",
+                        "surface-container": "#1f2022",
+                        "secondary-container": "#46464a",
+                        "secondary-fixed": "#e3e2e6",
+                        "surface-bright": "#38393b",
+                        "on-error": "#690005",
+                        "inverse-primary": "#005ac2",
+                        "on-secondary-fixed-variant": "#46464a",
+                        "level-0": "#0A0B0D",
+                        "level-1": "#141518",
+                        "level-2": "#191B20",
+                        "risk-high": "#ef4444",
+                        "risk-medium": "#f59e0b",
+                        "risk-low": "#10b981",
+                        "status-active": "#3b82f6",
+                        "status-review": "#6b7280"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "component-padding-x": "12px",
+                        "component-padding-y": "8px",
+                        "container-margin": "24px",
+                        "panel-gutter": "16px",
+                        "grid-columns": "12",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "section-title": ["Inter", "sans-serif"],
+                        "label-sm": ["Inter", "sans-serif"],
+                        "headline-md": ["Inter", "sans-serif"],
+                        "metadata-caps": ["Inter", "sans-serif"],
+                        "body-main": ["Inter", "sans-serif"],
+                        "display-lg": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "section-title": ["18px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "headline-md": ["22px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "metadata-caps": ["11px", { "lineHeight": "1.0", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                        "body-main": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0A0B0D; color: #e3e2e5; }
+        .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .ambient-shadow { box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+    </style>
+</head>
+<body class="font-body-main antialiased min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-panel-gutter h-16 bg-surface dark:bg-surface border-b border-white/5 bg-surface-container-low text-primary dark:text-primary">
+<div class="flex items-center gap-6">
+<div class="font-display-lg text-display-lg font-black tracking-tighter text-primary dark:text-primary">SIPER</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-white/5 transition-colors rounded-DEFAULT">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-white/5 transition-colors rounded-DEFAULT">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-white/5 transition-colors rounded-DEFAULT">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-16 bottom-0 w-[240px] z-40 flex flex-col py-4 px-2 bg-surface-container-low dark:bg-surface-container-low border-r border-white/5 bg-surface-container-low text-primary dark:text-primary hidden md:flex">
+<div class="px-3 mb-6 mt-2 flex flex-col gap-1">
+<div class="font-headline-md text-headline-md font-bold text-primary">Operator-01</div>
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant">Field Intelligence</div>
+</div>
+<ul class="flex flex-col gap-1 flex-grow">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary-container text-on-primary-container font-bold font-label-sm text-label-sm scale-95 duration-75" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="folder_shared">folder_shared</span>
+                    Cases
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="person_search">person_search</span>
+                    Entity Search
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="hub">hub</span>
+                    Graph Explorer
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="assessment">assessment</span>
+                    Reports
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="history_edu">history_edu</span>
+                    Audit Log
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+                    Settings
+                </a>
+</li>
+</ul>
+<div class="mt-auto border-t border-white/5 pt-4">
+<ul class="flex flex-col gap-1">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="contact_support">contact_support</span>
+                        Support
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all font-label-sm text-label-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span>
+                        Help
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="ml-[240px] pt-16 p-container-margin h-screen overflow-y-auto">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-2">Cases</h1>
+<p class="font-body-main text-body-main text-on-surface-variant">Manage investigations, evidence and network analysis.</p>
+</div>
+<button class="bg-[#3B82F6] hover:bg-blue-600 text-white px-4 py-2 rounded-DEFAULT font-label-sm text-label-sm transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                Create New Case
+            </button>
+</div>
+<!-- Filters Section -->
+<div class="glass-panel rounded-lg p-component-padding-y px-component-padding-x mb-6 flex flex-wrap gap-4 items-center">
+<div class="relative flex-grow min-w-[200px] max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full bg-level-0 border border-white/5 rounded-DEFAULT py-1.5 pl-9 pr-3 text-on-surface font-body-main text-body-main focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder:text-outline" placeholder="Search cases..." type="text"/>
+</div>
+<div class="flex gap-4">
+<select class="bg-level-0 border border-white/5 rounded-DEFAULT py-1.5 px-3 text-on-surface font-label-sm text-label-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none appearance-none pr-8 relative">
+<option>Status: All</option>
+<option>Active</option>
+<option>Under Review</option>
+<option>Closed</option>
+</select>
+<select class="bg-level-0 border border-white/5 rounded-DEFAULT py-1.5 px-3 text-on-surface font-label-sm text-label-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none appearance-none pr-8">
+<option>Risk: All</option>
+<option>Low</option>
+<option>Medium</option>
+<option>High</option>
+</select>
+<select class="bg-level-0 border border-white/5 rounded-DEFAULT py-1.5 px-3 text-on-surface font-label-sm text-label-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none appearance-none pr-8">
+<option>Sort: Last Updated</option>
+<option>Priority</option>
+<option>Case ID</option>
+</select>
+</div>
+</div>
+<!-- Investigation Table -->
+<div class="bg-level-1 border border-white/5 rounded-lg overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-white/10 font-metadata-caps text-metadata-caps text-on-surface-variant bg-level-2">
+<th class="py-3 px-4 font-normal">Case ID</th>
+<th class="py-3 px-4 font-normal">Investigation</th>
+<th class="py-3 px-4 font-normal">Priority</th>
+<th class="py-3 px-4 font-normal">Status</th>
+<th class="py-3 px-4 font-normal text-center">Entities</th>
+<th class="py-3 px-4 font-normal text-center">Docs</th>
+<th class="py-3 px-4 font-normal text-center">AI Findings</th>
+<th class="py-3 px-4 font-normal">Last Updated</th>
+<th class="py-3 px-4 font-normal">Owner</th>
+<th class="py-3 px-4 font-normal"></th>
+</tr>
+</thead>
+<tbody class="font-body-main text-body-main">
+<!-- Row 1 -->
+<tr class="border-b border-white/5 hover:bg-level-2 transition-colors cursor-pointer bg-level-2 group">
+<td class="py-3 px-4 font-mono text-primary font-medium text-[13px]">CASE-26189</td>
+<td class="py-3 px-4 text-on-surface font-medium">Organized Network Investigation</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-risk-high/30 bg-risk-high/10 text-risk-high font-metadata-caps text-[10px]">
+<span class="w-1.5 h-1.5 rounded-full bg-risk-high"></span> HIGH
+                            </span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-status-active/30 bg-status-active/10 text-status-active font-metadata-caps text-[10px]">
+                                ACTIVE
+                            </span>
+</td>
+<td class="py-3 px-4 text-center text-on-surface-variant">74</td>
+<td class="py-3 px-4 text-center text-on-surface-variant">32</td>
+<td class="py-3 px-4 text-center text-primary">11</td>
+<td class="py-3 px-4 text-on-surface-variant text-[13px]">12 min ago</td>
+<td class="py-3 px-4 text-on-surface-variant text-[13px]">Investigator-7</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-white/5 hover:bg-level-2 transition-colors cursor-pointer group">
+<td class="py-3 px-4 font-mono text-on-surface-variant text-[13px]">CASE-26172</td>
+<td class="py-3 px-4 text-on-surface">Financial Network Analysis</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-risk-medium/30 bg-risk-medium/10 text-risk-medium font-metadata-caps text-[10px]">
+<span class="w-1.5 h-1.5 rounded-full bg-risk-medium"></span> MEDIUM
+                            </span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-status-review/30 bg-status-review/10 text-status-review font-metadata-caps text-[10px]">
+                                UNDER REVIEW
+                            </span>
+</td>
+<td class="py-3 px-4 text-center text-on-surface-variant">38</td>
+<td class="py-3 px-4 text-center text-on-surface-variant">17</td>
+<td class="py-3 px-4 text-center text-on-surface-variant">4</td>
+<td class="py-3 px-4 text-on-surface-variant text-[13px]">1 hour ago</td>
+<td class="py-3 px-4 text-on-surface-variant text-[13px]">Investigator-4</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-white/5 hover:bg-level-2 transition-colors cursor-pointer group">
+<td class="py-3 px-4 font-mono text-on-surface-variant text-[13px]">CASE-26155</td>
+<td class="py-3 px-4 text-on-surface">Cross-Border Logistics Surveillance</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-risk-high/30 bg-risk-high/10 text-risk-high font-metadata-caps text-[10px]">
+<span class="w-1.5 h-1.5 rounded-full bg-risk-high"></span> HIGH
+                            </span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full border border-status-active/30 bg-status-active/10 text-status-active font-metadata-caps text-[10px]">
+                                ACTIVE
+                            </span>
+</td>
+<td class="py-3 px-4 text-center text-on-surface-variant">112</td>
+<td class="py-3 px-4 text-center text-on-surface-variant">45</td>
+<td class="py-3 px-4 text-center text-on-surface-variant">18</td>
+<td class="py-3 px-4 text-on-surface-variant text-[13px]">3 hours ago</td>
+<td class="py-3 px-4 text-on-surface-variant text-[13px]">Investigator-7</td>
+<td class="py-3 px-4 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="py-3 px-4 border-t border-white/5 bg-level-1 flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm">
+<span>Showing 1 to 3 of 42 cases</span>
+<div class="flex gap-2">
+<button class="p-1 rounded hover:bg-white/5 disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="p-1 rounded hover:bg-white/5">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

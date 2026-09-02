@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SIPER | New Investigation: Step 3 (Initial Analysis)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#1a1c21",
+                        "primary": "#adc6ff",
+                        "surface-bright": "#38393b",
+                        "on-error": "#690005",
+                        "surface": "#121315",
+                        "on-secondary-fixed-variant": "#46464a",
+                        "surface-tint": "#adc6ff",
+                        "on-surface": "#e3e2e5",
+                        "on-tertiary-container": "#282a2f",
+                        "surface-container-high": "#292a2c",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-surface-variant": "#c2c6d6",
+                        "tertiary": "#c6c6cd",
+                        "on-secondary": "#2f3033",
+                        "secondary-container": "#46464a",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#b5b4b9",
+                        "inverse-on-surface": "#303033",
+                        "tertiary-container": "#8f9097",
+                        "outline-variant": "#424754",
+                        "secondary-fixed-dim": "#c7c6ca",
+                        "background": "#121315",
+                        "surface-container-highest": "#343537",
+                        "on-secondary-fixed": "#1b1b1f",
+                        "surface-variant": "#343537",
+                        "primary-container": "#4d8eff",
+                        "tertiary-fixed": "#e2e2e9",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container": "#1f2022",
+                        "on-tertiary": "#2e3036",
+                        "inverse-primary": "#005ac2",
+                        "on-primary": "#002e6a",
+                        "outline": "#8c909f",
+                        "on-tertiary-fixed-variant": "#45474c",
+                        "on-primary-container": "#00285d",
+                        "secondary-fixed": "#e3e2e6",
+                        "error-container": "#93000a",
+                        "surface-dim": "#121315",
+                        "on-primary-fixed": "#001a42",
+                        "tertiary-fixed-dim": "#c6c6cd",
+                        "on-primary-fixed-variant": "#004395",
+                        "secondary": "#c7c6ca",
+                        "surface-container-lowest": "#0d0e10",
+                        "surface-container-low": "#1b1c1e",
+                        "error": "#ffb4ab",
+                        "inverse-surface": "#e3e2e5",
+                        "on-background": "#e3e2e5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "container-margin": "24px",
+                        "component-padding-x": "12px",
+                        "component-padding-y": "8px",
+                        "grid-columns": "12",
+                        "panel-gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-main": ["Inter"],
+                        "section-title": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "metadata-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-main": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "section-title": ["18px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "display-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "headline-md": ["22px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "metadata-caps": ["11px", { "lineHeight": "1.0", "letterSpacing": "0.08em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        /* Tonal Layers & Borders as per Style Guidance */
+        .glass-panel { background: rgba(255,255,255,0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05); }
+        .level-0 { background-color: #0A0B0D; }
+        .level-1 { background-color: #141518; border: 1px solid rgba(255,255,255,0.05); }
+        .level-2 { background-color: #191B20; border: 1px solid rgba(255,255,255,0.05); }
+        
+        /* Entity Extraction Chips Custom Colors */
+        .chip-person { border-top: 2px solid #3B82F6; } /* Blue */
+        .chip-phone { border-top: 2px solid #A855F7; } /* Purple */
+        .chip-vehicle { border-top: 2px solid #F97316; } /* Orange */
+        .chip-location { border-top: 2px solid #22C55E; } /* Green */
+        .chip-organization { border-top: 2px solid #06B6D4; } /* Cyan */
+        .chip-financial { border-top: 2px solid #EAB308; } /* Yellow */
+        .chip-incident { border-top: 2px solid #EF4444; } /* Red */
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-body-main text-body-main overflow-hidden">
+<!-- TopNavBar: Suppressed Nav Links (Transactional flow), keeping Brand/Title -->
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-panel-gutter h-16 border-b border-white/5 bg-surface-container-low">
+<div class="flex items-center gap-4">
+<span class="font-display-lg text-display-lg font-black tracking-tighter text-primary">SIPER</span>
+<div class="h-6 w-px bg-white/10 mx-2"></div>
+<span class="font-headline-md text-headline-md text-on-surface">New Investigation</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded hover:bg-white/5 text-on-surface-variant transition-colors" title="Cancel">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas Level 0 -->
+<main class="flex-1 mt-16 flex flex-col level-0 w-full max-w-6xl mx-auto p-container-margin overflow-y-auto">
+<!-- Step Indicator -->
+<nav aria-label="Progress" class="mb-8 w-full max-w-4xl mx-auto mt-4">
+<ol class="flex items-center justify-between w-full" role="list">
+<!-- Step 1: Completed -->
+<li class="relative pr-8 sm:pr-20">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="h-0.5 w-full bg-primary"></div>
+</div>
+<a class="relative flex h-8 w-8 items-center justify-center rounded-full bg-primary hover:bg-primary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined text-on-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+<span class="absolute -bottom-6 font-metadata-caps text-metadata-caps text-primary whitespace-nowrap">Case Details</span>
+</a>
+</li>
+<!-- Step 2: Completed -->
+<li class="relative pr-8 sm:pr-20">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="h-0.5 w-full bg-primary"></div>
+</div>
+<a class="relative flex h-8 w-8 items-center justify-center rounded-full bg-primary hover:bg-primary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined text-on-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+<span class="absolute -bottom-6 font-metadata-caps text-metadata-caps text-primary whitespace-nowrap">Data Sources</span>
+</a>
+</li>
+<!-- Step 3: Active -->
+<li class="relative pr-8 sm:pr-20">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="h-0.5 w-full bg-surface-container-highest"></div>
+</div>
+<a aria-current="step" class="relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-primary bg-level-2" href="#">
+<span class="text-primary font-bold text-sm">3</span>
+<span class="absolute -bottom-6 font-metadata-caps text-metadata-caps text-on-surface whitespace-nowrap">Initial Analysis</span>
+</a>
+</li>
+<!-- Step 4: Inactive -->
+<li class="relative">
+<a class="relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-surface-container-highest bg-level-1" href="#">
+<span class="text-on-surface-variant font-bold text-sm">4</span>
+<span class="absolute -bottom-6 font-metadata-caps text-metadata-caps text-on-surface-variant whitespace-nowrap">Review</span>
+</a>
+</li>
+</ol>
+</nav>
+<!-- Main Content Area: Two Sections Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-5xl mx-auto flex-1 mb-24">
+<!-- LEFT: Entity Extraction -->
+<section class="level-1 rounded-lg p-6 flex flex-col h-full shadow-lg">
+<div class="mb-6 border-b border-white/5 pb-4">
+<h2 class="font-section-title text-section-title text-on-surface mb-1 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">hub</span>
+                        Entity Extraction
+                    </h2>
+<p class="text-on-surface-variant text-sm">Select data types to isolate and extract from unstructured sources.</p>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<!-- Chip: Person -->
+<button class="level-2 rounded flex flex-col p-3 chip-person hover:bg-surface-container-highest transition-colors text-left relative group">
+<div class="absolute top-2 right-2 text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="material-symbols-outlined text-[#3B82F6] mb-2">person</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Person</span>
+<span class="text-[10px] text-on-surface-variant mt-1">Names, Aliases, IDs</span>
+</button>
+<!-- Chip: Phone -->
+<button class="level-2 rounded flex flex-col p-3 chip-phone hover:bg-surface-container-highest transition-colors text-left relative">
+<div class="absolute top-2 right-2 text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="material-symbols-outlined text-[#A855F7] mb-2">smartphone</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Phone</span>
+<span class="text-[10px] text-on-surface-variant mt-1">MSISDN, IMEI</span>
+</button>
+<!-- Chip: Vehicle -->
+<button class="level-2 rounded flex flex-col p-3 chip-vehicle hover:bg-surface-container-highest transition-colors text-left relative">
+<div class="absolute top-2 right-2 text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="material-symbols-outlined text-[#F97316] mb-2">directions_car</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Vehicle</span>
+<span class="text-[10px] text-on-surface-variant mt-1">Plates, VINs</span>
+</button>
+<!-- Chip: Location -->
+<button class="level-2 rounded flex flex-col p-3 chip-location hover:bg-surface-container-highest transition-colors text-left relative">
+<div class="absolute top-2 right-2 text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="material-symbols-outlined text-[#22C55E] mb-2">location_on</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Location</span>
+<span class="text-[10px] text-on-surface-variant mt-1">Addresses, Geo-coords</span>
+</button>
+<!-- Chip: Organization -->
+<button class="level-2 rounded flex flex-col p-3 chip-organization hover:bg-surface-container-highest transition-colors text-left relative">
+<div class="absolute top-2 right-2 text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="material-symbols-outlined text-[#06B6D4] mb-2">business</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Organization</span>
+<span class="text-[10px] text-on-surface-variant mt-1">Companies, Groups</span>
+</button>
+<!-- Chip: Financial Account -->
+<button class="level-2 rounded flex flex-col p-3 chip-financial hover:bg-surface-container-highest transition-colors text-left relative">
+<div class="absolute top-2 right-2 text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="material-symbols-outlined text-[#EAB308] mb-2">account_balance</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Financial Account</span>
+<span class="text-[10px] text-on-surface-variant mt-1">IBAN, Crypto Wallets</span>
+</button>
+<!-- Chip: Incident -->
+<button class="level-2 rounded flex flex-col p-3 chip-incident hover:bg-surface-container-highest transition-colors text-left relative col-span-2">
+<div class="absolute top-2 right-2 text-primary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[#EF4444]">report</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Incident</span>
+</div>
+<span class="text-[10px] text-on-surface-variant">Events, Crimes, Intel Reports</span>
+</button>
+</div>
+</section>
+<!-- RIGHT: Analysis Modules -->
+<section class="level-1 rounded-lg p-6 flex flex-col h-full shadow-lg">
+<div class="mb-6 border-b border-white/5 pb-4">
+<h2 class="font-section-title text-section-title text-on-surface mb-1 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">memory</span>
+                        Analysis Modules
+                    </h2>
+<p class="text-on-surface-variant text-sm">Configure automated processing algorithms for the extracted dataset.</p>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Module: Entity Extraction (Required) -->
+<label class="level-2 rounded p-3 flex items-start gap-3 cursor-not-allowed opacity-80 border-l-2 border-l-surface-variant">
+<div class="flex items-center h-5 mt-0.5">
+<input checked="" class="h-4 w-4 rounded border-white/20 bg-surface-container-lowest text-primary focus:ring-primary focus:ring-offset-surface cursor-not-allowed" disabled="" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold flex items-center gap-2">
+                                Entity extraction 
+                                <span class="text-[9px] bg-surface-container-highest px-1.5 py-0.5 rounded text-on-surface-variant font-metadata-caps tracking-wider">REQUIRED</span>
+</span>
+<span class="text-xs text-on-surface-variant mt-0.5">Baseline processing</span>
+</div>
+</label>
+<!-- Module: Entity resolution -->
+<label class="level-2 rounded p-3 flex items-start gap-3 cursor-pointer hover:bg-surface-container-highest transition-colors border-l-2 border-l-primary">
+<div class="flex items-center h-5 mt-0.5">
+<input checked="" class="h-4 w-4 rounded border-white/20 bg-surface-container-lowest text-primary focus:ring-primary focus:ring-offset-surface" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Entity resolution</span>
+<span class="text-xs text-on-surface-variant mt-0.5">Deduplicate and merge identity nodes</span>
+</div>
+</label>
+<!-- Module: Relationship extraction -->
+<label class="level-2 rounded p-3 flex items-start gap-3 cursor-pointer hover:bg-surface-container-highest transition-colors border-l-2 border-l-primary">
+<div class="flex items-center h-5 mt-0.5">
+<input checked="" class="h-4 w-4 rounded border-white/20 bg-surface-container-lowest text-primary focus:ring-primary focus:ring-offset-surface" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Relationship extraction</span>
+<span class="text-xs text-on-surface-variant mt-0.5">Identify connections between entities</span>
+</div>
+</label>
+<!-- Module: Centrality analysis -->
+<label class="level-2 rounded p-3 flex items-start gap-3 cursor-pointer hover:bg-surface-container-highest transition-colors border-l-2 border-l-primary">
+<div class="flex items-center h-5 mt-0.5">
+<input checked="" class="h-4 w-4 rounded border-white/20 bg-surface-container-lowest text-primary focus:ring-primary focus:ring-offset-surface" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Centrality analysis</span>
+<span class="text-xs text-on-surface-variant mt-0.5">Calculate network importance scores</span>
+</div>
+</label>
+<!-- Module: Pattern detection -->
+<label class="level-2 rounded p-3 flex items-start gap-3 cursor-pointer hover:bg-surface-container-highest transition-colors border-l-2 border-l-primary">
+<div class="flex items-center h-5 mt-0.5">
+<input checked="" class="h-4 w-4 rounded border-white/20 bg-surface-container-lowest text-primary focus:ring-primary focus:ring-offset-surface" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Pattern detection</span>
+<span class="text-xs text-on-surface-variant mt-0.5">Detect known typology matches</span>
+</div>
+</label>
+<!-- Module: Timeline correlation -->
+<label class="level-2 rounded p-3 flex items-start gap-3 cursor-pointer hover:bg-surface-container-highest transition-colors border-l-2 border-l-primary">
+<div class="flex items-center h-5 mt-0.5">
+<input checked="" class="h-4 w-4 rounded border-white/20 bg-surface-container-lowest text-primary focus:ring-primary focus:ring-offset-surface" type="checkbox"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Timeline correlation</span>
+<span class="text-xs text-on-surface-variant mt-0.5">Map events chronologically</span>
+</div>
+</label>
+</div>
+</section>
+</div>
+</main>
+<!-- Fixed Footer Actions -->
+<footer class="fixed bottom-0 left-0 right-0 h-20 level-1 border-t border-white/5 flex items-center justify-between px-8 z-40">
+<button class="px-6 py-2.5 rounded border border-white/20 bg-transparent text-on-surface hover:bg-white/5 transition-colors font-label-sm text-label-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+            Back
+        </button>
+<button class="px-8 py-2.5 rounded bg-[#3B82F6] text-white hover:bg-[#2563EB] transition-colors font-label-sm text-label-sm shadow-[0_0_15px_rgba(59,130,246,0.4)] flex items-center gap-2 font-semibold">
+            Review Investigation
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</footer>
+</body></html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SIPER — AI-Powered Criminal Network Analysis System</title>
+  
+  <!-- Inter & Material Symbols Outlined -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "brand-bg": "#050B14",
+            "surface-base": "#050B14",
+            "surface": "#07111D",
+            "surface-container-low": "#07111D",
+            "surface-container": "#0B1422",
+            "surface-container-high": "#101D2E",
+            "surface-container-highest": "#13263A",
+            "primary": "#00C8FF",
+            "primary-bright": "#19D9FF",
+            "primary-soft": "rgba(0, 200, 255, 0.12)",
+            "intel-green": "#00E5A0",
+            "warning": "#FFB020",
+            "high-risk": "#FF8A3D",
+            "critical": "#FF4D67",
+            "danger": "#FF304F",
+            "on-surface": "#E6F1FF",
+            "on-surface-variant": "#A8BDD1",
+            "muted-text": "#6F879D",
+            "disabled-text": "#40566A",
+            "outline": "#1B344D",
+            "outline-subtle": "#13283D",
+            "outline-strong": "rgba(0, 200, 255, 0.35)",
+            "entity-person": "#00C8FF",
+            "entity-phone": "#38BDF8",
+            "entity-vehicle": "#FF8A3D",
+            "entity-location": "#00E5A0",
+            "entity-organization": "#2DD4BF",
+            "entity-financial": "#FFB020",
+            "entity-incident": "#FF4D67"
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  
+  <!-- Custom Design System Styles -->
+  <link rel="stylesheet" href="/styles/app.css"/>
+</head>
+<body class="bg-brand-bg text-on-surface antialiased h-screen w-screen overflow-hidden flex flex-col font-sans selection:bg-primary/30 selection:text-primary">
+  
+  <!-- Application Container -->
+  <div id="app" class="h-full w-full flex flex-col"></div>
+  
+  <!-- Modal Overlay Container -->
+  <div id="modal-container"></div>
+  
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Component Scripts -->
+  <script src="/src/components/AppShell.js"></script>
+  <script src="/src/components/GlobalSearchModal.js"></script>
+  <script src="/src/components/LoginView.js"></script>
+  <script src="/src/components/DashboardView.js"></script>
+  <script src="/src/components/CasesView.js"></script>
+  <script src="/src/components/GraphExplorerView.js"></script>
+  <script src="/src/components/EntityProfileView.js"></script>
+  <script src="/src/components/EntitySearchView.js"></script>
+  <script src="/src/components/DataIngestionView.js"></script>
+  <script src="/src/components/AiFindingsView.js"></script>
+  <script src="/src/components/EvidenceWorkspaceView.js"></script>
+  <script src="/src/components/ReportBuilderView.js"></script>
+  <script src="/src/components/AuditLogView.js"></script>
+  <script src="/src/components/SettingsView.js"></script>
+  
+  <!-- Main Application Orchestrator -->
+  <script src="/src/app.js"></script>
+</body>
+</html>

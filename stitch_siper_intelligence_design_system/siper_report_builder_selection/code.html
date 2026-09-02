@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SIPER Report Builder - Evidence Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#00285d",
+                      "surface-container-lowest": "#0d0e10",
+                      "on-secondary": "#2f3033",
+                      "primary-fixed": "#d8e2ff",
+                      "outline-variant": "#424754",
+                      "on-secondary-fixed": "#1b1b1f",
+                      "on-tertiary-container": "#282a2f",
+                      "tertiary-fixed": "#e2e2e9",
+                      "on-tertiary": "#2e3036",
+                      "on-error": "#690005",
+                      "inverse-on-surface": "#303033",
+                      "tertiary-fixed-dim": "#c6c6cd",
+                      "secondary-fixed-dim": "#c7c6ca",
+                      "primary-fixed-dim": "#adc6ff",
+                      "surface-container-low": "#1b1c1e",
+                      "on-secondary-container": "#b5b4b9",
+                      "surface-container": "#1f2022",
+                      "error": "#ffb4ab",
+                      "surface-dim": "#121315",
+                      "on-primary": "#002e6a",
+                      "on-tertiary-fixed-variant": "#45474c",
+                      "surface-variant": "#343537",
+                      "primary-container": "#4d8eff",
+                      "tertiary": "#c6c6cd",
+                      "primary": "#adc6ff",
+                      "secondary-container": "#46464a",
+                      "outline": "#8c909f",
+                      "on-primary-fixed-variant": "#004395",
+                      "inverse-primary": "#005ac2",
+                      "surface-tint": "#adc6ff",
+                      "secondary": "#c7c6ca",
+                      "on-error-container": "#ffdad6",
+                      "inverse-surface": "#e3e2e5",
+                      "on-secondary-fixed-variant": "#46464a",
+                      "surface-bright": "#38393b",
+                      "surface-container-high": "#292a2c",
+                      "on-primary-fixed": "#001a42",
+                      "secondary-fixed": "#e3e2e6",
+                      "surface": "#121315",
+                      "background": "#121315",
+                      "on-background": "#e3e2e5",
+                      "error-container": "#93000a",
+                      "surface-container-highest": "#343537",
+                      "on-surface": "#e3e2e5",
+                      "on-tertiary-fixed": "#1a1c21",
+                      "on-surface-variant": "#c2c6d6",
+                      "tertiary-container": "#8f9097"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "panel-gutter": "16px",
+                      "grid-columns": "12",
+                      "component-padding-y": "8px",
+                      "base": "4px",
+                      "container-margin": "24px",
+                      "component-padding-x": "12px"
+              },
+              "fontFamily": {
+                      "section-title": [
+                              "Inter"
+                      ],
+                      "body-main": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "metadata-caps": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "section-title": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-main": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "22px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "metadata-caps": [
+                              "11px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.08em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        /* Custom scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121315;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #343537;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #424754;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-main antialiased h-screen flex flex-col overflow-hidden">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 left-0 w-full h-16 flex justify-between items-center px-container-margin z-50 bg-surface-container-low dark:bg-surface-container-low border-b border-white/5">
+<div class="flex items-center gap-4">
+<span class="text-headline-md font-headline-md font-bold text-on-surface dark:text-on-surface tracking-tight">SIPER Intelligence System</span>
+</div>
+<!-- Progress Indicator -->
+<div class="flex-1 flex justify-center items-center">
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="w-6 h-6 rounded-full flex items-center justify-center text-label-sm font-label-sm bg-surface-variant">1</span>
+<span class="text-label-sm font-label-sm hidden md:inline">Details</span>
+</div>
+<div class="w-8 h-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="w-6 h-6 rounded-full flex items-center justify-center text-label-sm font-label-sm bg-primary text-on-primary">2</span>
+<span class="text-label-sm font-label-sm hidden md:inline">Evidence</span>
+</div>
+<div class="w-8 h-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="w-6 h-6 rounded-full flex items-center justify-center text-label-sm font-label-sm bg-surface-variant">3</span>
+<span class="text-label-sm font-label-sm hidden md:inline">Entities</span>
+</div>
+<div class="w-8 h-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="w-6 h-6 rounded-full flex items-center justify-center text-label-sm font-label-sm bg-surface-variant">4</span>
+<span class="text-label-sm font-label-sm hidden md:inline">Findings</span>
+</div>
+<div class="w-8 h-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="w-6 h-6 rounded-full flex items-center justify-center text-label-sm font-label-sm bg-surface-variant">5</span>
+<span class="text-label-sm font-label-sm hidden md:inline">Review</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 text-primary dark:text-primary">
+<button class="p-2 hover:bg-surface-container-highest rounded-full transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container-highest rounded-full transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden ml-2 border border-white/10">
+<img alt="Investigator profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVBiah1Bk5GDrk17N8DwrdXM2xEKhk5de9k0OexM-EkDLOhv0vLJ5evJR96nNAVQAAzNACeCYlWyzt9j-O3gSb55Bea-b2wr-3quH1wsjThXOAXEJIvMQI0MHkILVv7EydRjRAu7GXMX0csoXU78h_3KGFaTWaBsrGZJt6YukIQg8qNq_haUBHa9xPTm4EOvX5LVDwXa9NwUs05R_KeMJwMib2AA_UKERadAd24-sgiusRQNWqe5FPLA"/>
+</div>
+</div>
+</nav>
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-60 flex flex-col py-4 px-3 z-40 bg-surface-container dark:bg-surface-container border-r border-white/5">
+<div class="mb-6 px-3">
+<h2 class="text-section-title font-section-title text-on-surface">Task Force Alpha</h2>
+<p class="text-metadata-caps font-metadata-caps text-on-surface-variant mt-1">Level 4 Clearance</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-label-sm font-label-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="text-label-sm font-label-sm">Cases</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person_search">person_search</span>
+<span class="text-label-sm font-label-sm">Entity Search</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="text-label-sm font-label-sm">Graph Explorer</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary-container text-on-primary-container opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="text-label-sm font-label-sm">Evidence</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-label-sm font-label-sm">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="text-label-sm font-label-sm">Audit Log</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-sm font-label-sm">Settings</span>
+</a>
+</nav>
+<div class="mt-auto space-y-1 pt-4 border-t border-white/5">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span class="text-label-sm font-label-sm">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-label-sm font-label-sm">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-60 mt-16 flex-1 flex bg-surface-dim overflow-hidden relative">
+<!-- Left/Main Panel: Selection Interface -->
+<div class="flex-1 flex flex-col overflow-y-auto p-container-margin gap-6 z-10 relative">
+<header class="mb-4">
+<h1 class="text-display-lg font-display-lg text-on-surface">Evidence Selection</h1>
+<p class="text-body-main font-body-main text-on-surface-variant mt-2 max-w-2xl">Select intelligence artifacts to include in the final report. AI-suggested highly relevant findings are marked.</p>
+</header>
+<!-- Bento Grid Layout for Sections -->
+<div class="grid grid-cols-12 gap-panel-gutter">
+<!-- Entities Section -->
+<section class="col-span-12 lg:col-span-6 bg-surface-container-low border border-white/5 rounded-xl p-4">
+<div class="flex justify-between items-center border-b border-white/10 pb-2 mb-4">
+<h2 class="text-section-title font-section-title flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="person">person</span>
+                            Entities
+                        </h2>
+<span class="text-metadata-caps font-metadata-caps text-on-surface-variant">3 AVAILABLE</span>
+</div>
+<div class="space-y-3">
+<label class="flex items-start gap-3 p-3 rounded-lg hover:bg-surface-variant transition-colors cursor-pointer border border-transparent hover:border-white/5">
+<input checked="" class="mt-1 rounded bg-surface-dim border-outline text-primary focus:ring-primary focus:ring-offset-background" type="checkbox"/>
+<div class="flex-1">
+<p class="text-body-main font-body-main font-semibold text-on-surface">Ravi Kumar</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Primary Target • ID: P-8821</p>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 rounded-lg hover:bg-surface-variant transition-colors cursor-pointer border border-transparent hover:border-white/5">
+<input class="mt-1 rounded bg-surface-dim border-outline text-primary focus:ring-primary focus:ring-offset-background" type="checkbox"/>
+<div class="flex-1">
+<p class="text-body-main font-body-main font-semibold text-on-surface">Mohan Singh</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Known Associate • ID: P-9912</p>
+</div>
+</label>
+</div>
+</section>
+<!-- AI Findings Section -->
+<section class="col-span-12 lg:col-span-6 bg-[#191B20] border border-primary/20 rounded-xl p-4 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none"></div>
+<div class="flex justify-between items-center border-b border-white/10 pb-2 mb-4 relative z-10">
+<h2 class="text-section-title font-section-title flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="smart_toy">smart_toy</span>
+                            AI Insights
+                        </h2>
+</div>
+<div class="space-y-3 relative z-10">
+<label class="flex items-start gap-3 p-3 rounded-lg bg-surface-container-low border border-white/5 hover:bg-surface-variant transition-colors cursor-pointer">
+<input checked="" class="mt-1 rounded bg-surface-dim border-outline text-primary focus:ring-primary focus:ring-offset-background" type="checkbox"/>
+<div class="flex-1">
+<div class="flex justify-between">
+<p class="text-body-main font-body-main font-semibold text-on-surface">Shared Intermediary Detected</p>
+<span class="text-metadata-caps font-metadata-caps text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded">89% CONF</span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-1">Pattern analysis indicates high probability of communication routing through Entity X-44.</p>
+</div>
+</label>
+</div>
+</section>
+<!-- Source Documents Section -->
+<section class="col-span-12 bg-surface-container-low border border-white/5 rounded-xl p-4">
+<div class="flex justify-between items-center border-b border-white/10 pb-2 mb-4">
+<h2 class="text-section-title font-section-title flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="description">description</span>
+                            Source Documents
+                        </h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="flex items-center gap-3 p-3 rounded-lg bg-surface-dim border border-white/5 hover:border-white/10 cursor-pointer transition-colors">
+<input checked="" class="rounded bg-surface-container border-outline text-primary focus:ring-primary focus:ring-offset-background" type="checkbox"/>
+<span class="material-symbols-outlined text-error text-[20px]" data-icon="picture_as_pdf">picture_as_pdf</span>
+<div class="flex-1 truncate">
+<p class="text-body-main font-body-main text-on-surface truncate">FIR-1029_Complete.pdf</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">2.4 MB • Official Record</p>
+</div>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-lg bg-surface-dim border border-white/5 hover:border-white/10 cursor-pointer transition-colors">
+<input class="rounded bg-surface-container border-outline text-primary focus:ring-primary focus:ring-offset-background" type="checkbox"/>
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="csv">csv</span>
+<div class="flex-1 truncate">
+<p class="text-body-main font-body-main text-on-surface truncate">CDR-8842_Export.csv</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">12 KB • Telecom Data</p>
+</div>
+</label>
+</div>
+</section>
+</div>
+<!-- Bottom Navigation Bar for Form Steps -->
+<div class="mt-auto pt-6 border-t border-white/5 flex justify-between items-center sticky bottom-0 bg-surface-dim/90 backdrop-blur-md pb-6 z-20">
+<button class="px-6 py-2 rounded-lg border border-white/20 text-on-surface hover:bg-surface-variant transition-colors text-label-sm font-label-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_back">arrow_back</span>
+                    Back
+                </button>
+<button class="px-6 py-2 rounded-lg bg-primary text-on-primary hover:bg-primary/90 transition-colors text-label-sm font-label-sm font-semibold flex items-center gap-2">
+                    Next: Entities
+                    <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Right Contextual Panel: Report Summary -->
+<aside class="w-[320px] bg-surface-container border-l border-white/5 flex flex-col z-20 hidden xl:flex">
+<div class="p-4 border-b border-white/5 flex items-center justify-between bg-surface-container-low">
+<h3 class="text-section-title font-section-title text-on-surface">Report Summary</h3>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="summarize">summarize</span>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-6">
+<div>
+<h4 class="text-metadata-caps font-metadata-caps text-on-surface-variant mb-2 border-b border-white/5 pb-1">SELECTED ENTITIES</h4>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-dim p-2 rounded border border-white/5">
+<span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                            Ravi Kumar
+                        </li>
+</ul>
+</div>
+<div>
+<h4 class="text-metadata-caps font-metadata-caps text-on-surface-variant mb-2 border-b border-white/5 pb-1">KEY FINDINGS</h4>
+<ul class="space-y-2">
+<li class="flex items-start gap-2 text-label-sm font-label-sm text-on-surface bg-surface-dim p-2 rounded border border-primary/20">
+<span class="material-symbols-outlined text-primary text-[14px] mt-0.5" data-icon="smart_toy">smart_toy</span>
+                            Shared Intermediary Detected
+                        </li>
+</ul>
+</div>
+<div>
+<h4 class="text-metadata-caps font-metadata-caps text-on-surface-variant mb-2 border-b border-white/5 pb-1">DOCUMENTS</h4>
+<ul class="space-y-2">
+<li class="flex items-center justify-between text-label-sm font-label-sm text-on-surface bg-surface-dim p-2 rounded border border-white/5">
+<span class="truncate">FIR-1029_Complete.pdf</span>
+<span class="material-symbols-outlined text-outline text-[14px]" data-icon="check_circle">check_circle</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="p-4 border-t border-white/5 bg-surface-container-low">
+<div class="flex justify-between items-center mb-2">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Total Items Selected</span>
+<span class="text-headline-md font-headline-md text-primary">3</span>
+</div>
+<div class="w-full bg-surface-dim h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-1/3 rounded-full"></div>
+</div>
+</div>
+</aside>
+</main>
+</body></html>

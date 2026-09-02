@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SIPER | New Investigation: Step 4</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary-fixed": "#1a1c21",
+                        "primary": "#adc6ff",
+                        "surface-bright": "#38393b",
+                        "on-error": "#690005",
+                        "surface": "#121315",
+                        "on-secondary-fixed-variant": "#46464a",
+                        "surface-tint": "#adc6ff",
+                        "on-surface": "#e3e2e5",
+                        "on-tertiary-container": "#282a2f",
+                        "surface-container-high": "#292a2c",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-surface-variant": "#c2c6d6",
+                        "tertiary": "#c6c6cd",
+                        "on-secondary": "#2f3033",
+                        "secondary-container": "#46464a",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#b5b4b9",
+                        "inverse-on-surface": "#303033",
+                        "tertiary-container": "#8f9097",
+                        "outline-variant": "#424754",
+                        "secondary-fixed-dim": "#c7c6ca",
+                        "background": "#121315",
+                        "surface-container-highest": "#343537",
+                        "on-secondary-fixed": "#1b1b1f",
+                        "surface-variant": "#343537",
+                        "primary-container": "#4d8eff",
+                        "tertiary-fixed": "#e2e2e9",
+                        "primary-fixed": "#d8e2ff",
+                        "surface-container": "#1f2022",
+                        "on-tertiary": "#2e3036",
+                        "inverse-primary": "#005ac2",
+                        "on-primary": "#002e6a",
+                        "outline": "#8c909f",
+                        "on-tertiary-fixed-variant": "#45474c",
+                        "on-primary-container": "#00285d",
+                        "secondary-fixed": "#e3e2e6",
+                        "error-container": "#93000a",
+                        "surface-dim": "#121315",
+                        "on-primary-fixed": "#001a42",
+                        "tertiary-fixed-dim": "#c6c6cd",
+                        "on-primary-fixed-variant": "#004395",
+                        "secondary": "#c7c6ca",
+                        "surface-container-lowest": "#0d0e10",
+                        "surface-container-low": "#1b1c1e",
+                        "error": "#ffb4ab",
+                        "inverse-surface": "#e3e2e5",
+                        "on-background": "#e3e2e5"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "base": "4px",
+                        "container-margin": "24px",
+                        "component-padding-x": "12px",
+                        "component-padding-y": "8px",
+                        "grid-columns": "12",
+                        "panel-gutter": "16px"
+                    },
+                    fontFamily: {
+                        "body-main": ["Inter"],
+                        "section-title": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "metadata-caps": ["Inter"]
+                    },
+                    fontSize: {
+                        "body-main": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "section-title": ["18px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "display-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "headline-md": ["22px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "metadata-caps": ["11px", { "lineHeight": "1.0", "letterSpacing": "0.08em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0A0B0D; color: #e3e2e5; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .entity-border { border-top: 2px solid #3B82F6; }
+    </style>
+</head>
+<body class="font-body-main text-body-main antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- Top Navigation (Shell logic: Suppressed if intent is transactional/linear. Wait, creating a new investigation IS linear, but usually happens within the shell. Let's keep the shell as this is an enterprise app, but focus on the wizard.) -->
+<!-- Actually, the prompt says "TopNavBar" in the shared components, but the instruction is "Automatic Suppression: You MUST exclude the navigation shell if the page intent is: Linear/Transactional: Login, Sign-up, Onboarding, Checkout, or "Success/Confirmation" splash screens. Or Task-Focused: Any sub-page featuring a "Close" or "Back" action..." 
+         This is a wizard ("Step 4 (Review)"), so it should be task-focused and suppress the main shell. -->
+<!-- Focus Header -->
+<header class="fixed top-0 left-0 right-0 z-50 h-16 flex items-center justify-between px-container-margin border-b border-white/5 bg-surface-container-low">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-8 h-8 rounded hover:bg-white/5 transition-colors text-on-surface-variant group">
+<span class="material-symbols-outlined text-xl group-hover:text-primary transition-colors">close</span>
+</button>
+<div class="h-4 w-px bg-white/10"></div>
+<div>
+<span class="font-metadata-caps text-metadata-caps text-primary uppercase">New Investigation</span>
+<h1 class="font-headline-md text-headline-md text-on-surface mt-1">Review Configuration</h1>
+</div>
+</div>
+<div class="font-display-lg text-display-lg font-black tracking-tighter text-primary/50">SIPER</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow pt-24 pb-32 px-container-margin flex justify-center w-full">
+<div class="w-full max-w-5xl flex flex-col gap-8">
+<!-- Step Indicator -->
+<nav class="flex items-center w-full gap-2 relative z-10">
+<!-- Step 1 -->
+<div class="flex-1 flex flex-col gap-2 relative">
+<div class="h-1 w-full bg-primary rounded-full relative overflow-hidden">
+<div class="absolute inset-0 bg-white/20"></div>
+</div>
+<div class="flex justify-between items-center px-1">
+<span class="font-label-sm text-label-sm text-primary">Case Details</span>
+<span class="material-symbols-outlined text-primary" style="font-size: 14px; font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex-1 flex flex-col gap-2 relative">
+<div class="h-1 w-full bg-primary rounded-full relative overflow-hidden">
+<div class="absolute inset-0 bg-white/20"></div>
+</div>
+<div class="flex justify-between items-center px-1">
+<span class="font-label-sm text-label-sm text-primary">Data Sources</span>
+<span class="material-symbols-outlined text-primary" style="font-size: 14px; font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex-1 flex flex-col gap-2 relative">
+<div class="h-1 w-full bg-primary rounded-full relative overflow-hidden">
+<div class="absolute inset-0 bg-white/20"></div>
+</div>
+<div class="flex justify-between items-center px-1">
+<span class="font-label-sm text-label-sm text-primary">Initial Analysis</span>
+<span class="material-symbols-outlined text-primary" style="font-size: 14px; font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Step 4 (Active) -->
+<div class="flex-1 flex flex-col gap-2 relative">
+<div class="h-1 w-full bg-surface-variant rounded-full relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1/2 bg-primary rounded-full animate-pulse"></div>
+</div>
+<div class="flex justify-between items-center px-1">
+<span class="font-label-sm text-label-sm text-on-surface">Review</span>
+<span class="material-symbols-outlined text-on-surface-variant" style="font-size: 14px;">radio_button_checked</span>
+</div>
+</div>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Case Details & Config -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Case Details -->
+<section class="glass-panel rounded-lg p-6 flex flex-col gap-4 bg-[#141518]">
+<div class="flex items-center gap-2 border-b border-white/5 pb-2">
+<span class="material-symbols-outlined text-primary">folder_special</span>
+<h2 class="font-section-title text-section-title text-on-surface">Case Details</h2>
+</div>
+<div class="grid grid-cols-2 gap-y-6 gap-x-8">
+<div>
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant mb-1 uppercase">Case Name</div>
+<div class="font-body-main text-body-main text-on-surface">Operation Crimson Tide</div>
+</div>
+<div>
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant mb-1 uppercase">Priority</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<span class="font-body-main text-body-main text-error">High / Critical</span>
+</div>
+</div>
+<div>
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant mb-1 uppercase">Lead Owner</div>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center text-xs">J.D</div>
+<span class="font-body-main text-body-main text-on-surface">John Doe (Intel Div)</span>
+</div>
+</div>
+<div>
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant mb-1 uppercase">Tags</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container-high rounded text-xs text-on-surface-variant border border-white/5">Narcotics</span>
+<span class="px-2 py-1 bg-surface-container-high rounded text-xs text-on-surface-variant border border-white/5">Money Laundering</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Data Sources -->
+<section class="glass-panel rounded-lg p-6 flex flex-col gap-4 bg-[#141518]">
+<div class="flex items-center gap-2 border-b border-white/5 pb-2">
+<span class="material-symbols-outlined text-primary">database</span>
+<h2 class="font-section-title text-section-title text-on-surface">Data Sources</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Source Item -->
+<div class="flex items-center gap-3 p-3 rounded border border-white/5 bg-[#191B20] hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-primary-container">account_balance</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">FinCEN Logs</span>
+<span class="font-metadata-caps text-metadata-caps text-on-surface-variant uppercase mt-1">2.4M Records</span>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded border border-white/5 bg-[#191B20] hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-primary-container">flight_takeoff</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">CBP Travel Manifests</span>
+<span class="font-metadata-caps text-metadata-caps text-on-surface-variant uppercase mt-1">150K Records</span>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded border border-white/5 bg-[#191B20] hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-primary-container">call_log</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Telecom CDRs (Sprint/VZ)</span>
+<span class="font-metadata-caps text-metadata-caps text-on-surface-variant uppercase mt-1">500K Nodes</span>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded border border-white/5 bg-[#191B20] hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-primary-container">gavel</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Court Filings (PACER)</span>
+<span class="font-metadata-caps text-metadata-caps text-on-surface-variant uppercase mt-1">12K Docs</span>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded border border-white/5 bg-[#191B20] hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-primary-container">language</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">OSINT Crawl (Darkweb)</span>
+<span class="font-metadata-caps text-metadata-caps text-on-surface-variant uppercase mt-1">Pending Sync</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Config & Disclaimer -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Analysis Config -->
+<section class="glass-panel rounded-lg p-6 flex flex-col gap-4 bg-[#141518]">
+<div class="flex items-center gap-2 border-b border-white/5 pb-2">
+<span class="material-symbols-outlined text-primary">memory</span>
+<h2 class="font-section-title text-section-title text-on-surface">Analysis Config</h2>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<span class="font-body-main text-body-main text-on-surface-variant">Entity Types Indexed</span>
+<span class="font-label-sm text-label-sm text-primary bg-primary/10 px-2 py-1 rounded">7 Active</span>
+</div>
+<div class="flex flex-wrap gap-1">
+<span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 border border-white/10 rounded text-on-surface-variant">Person</span>
+<span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 border border-white/10 rounded text-on-surface-variant">Org</span>
+<span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 border border-white/10 rounded text-on-surface-variant">Vehicle</span>
+<span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 border border-white/10 rounded text-on-surface-variant">Account</span>
+<span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 border border-white/10 rounded text-on-surface-variant">Phone</span>
+<span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 border border-white/10 rounded text-on-surface-variant">Address</span>
+<span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 border border-white/10 rounded text-on-surface-variant">Crypto</span>
+</div>
+<div class="h-px bg-white/5 my-2"></div>
+<div class="flex justify-between items-center">
+<span class="font-body-main text-body-main text-on-surface-variant">Modules Enabled</span>
+<span class="font-label-sm text-label-sm text-primary bg-primary/10 px-2 py-1 rounded">6 Active</span>
+</div>
+<ul class="flex flex-col gap-2 font-label-sm text-label-sm text-on-surface">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> Link Analysis</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> Geo-Spatial Clustering</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> NLP Extraction</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> Pattern Recognition</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> Financial Flow</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-sm">check</span> Temporal Sequencing</li>
+</ul>
+</div>
+</section>
+<!-- Disclaimer -->
+<div class="border border-amber-500/30 bg-amber-500/5 rounded p-4 flex gap-3 items-start mt-auto">
+<span class="material-symbols-outlined text-amber-500/70 text-lg mt-0.5">warning</span>
+<p class="font-metadata-caps text-metadata-caps text-on-surface-variant leading-relaxed">
+                            AI Analysis is assistive. Results represent statistical confidence and are provided for investigator verification. No automatic criminality is predicted.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Fixed Footer Actions -->
+<footer class="fixed bottom-0 left-0 right-0 h-20 bg-surface-container-low border-t border-white/5 flex items-center justify-between px-container-margin z-40 backdrop-blur-md bg-opacity-90">
+<button class="flex items-center gap-2 px-4 py-2 rounded text-on-surface hover:bg-white/5 transition-colors border border-transparent font-label-sm text-label-sm">
+<span class="material-symbols-outlined">arrow_back</span>
+            Back to Analysis
+        </button>
+<div class="flex items-center gap-4">
+<button class="px-4 py-2 rounded text-on-surface border border-white/20 hover:bg-white/5 transition-colors font-label-sm text-label-sm">
+                Save Draft
+            </button>
+<button class="flex items-center gap-2 px-6 py-2.5 rounded bg-[#005ac2] hover:bg-[#004395] text-white transition-colors font-label-sm text-label-sm font-bold shadow-[0_0_15px_rgba(0,90,194,0.4)]">
+<span class="material-symbols-outlined text-sm">rocket_launch</span>
+                Create Investigation
+            </button>
+</div>
+</footer>
+</body></html>

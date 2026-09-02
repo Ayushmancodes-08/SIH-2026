@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SIPER - Design System Reference</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#c7c6ca",
+                      "secondary-fixed": "#e3e2e6",
+                      "on-secondary": "#2f3033",
+                      "on-background": "#e3e2e5",
+                      "inverse-surface": "#e3e2e5",
+                      "on-tertiary": "#2e3036",
+                      "secondary-container": "#46464a",
+                      "surface-container-high": "#292a2c",
+                      "on-tertiary-container": "#282a2f",
+                      "surface-container-lowest": "#0d0e10",
+                      "surface": "#121315",
+                      "on-tertiary-fixed-variant": "#45474c",
+                      "error": "#ffb4ab",
+                      "on-surface": "#e3e2e5",
+                      "on-secondary-container": "#b5b4b9",
+                      "surface-container-highest": "#343537",
+                      "primary-fixed-dim": "#adc6ff",
+                      "on-primary": "#002e6a",
+                      "surface-bright": "#38393b",
+                      "surface-variant": "#343537",
+                      "on-error-container": "#ffdad6",
+                      "secondary": "#c7c6ca",
+                      "on-secondary-fixed-variant": "#46464a",
+                      "primary": "#adc6ff",
+                      "primary-fixed": "#d8e2ff",
+                      "surface-dim": "#121315",
+                      "surface-container-low": "#1b1c1e",
+                      "primary-container": "#4d8eff",
+                      "on-secondary-fixed": "#1b1b1f",
+                      "surface-tint": "#adc6ff",
+                      "on-error": "#690005",
+                      "on-tertiary-fixed": "#1a1c21",
+                      "outline": "#8c909f",
+                      "tertiary-container": "#8f9097",
+                      "on-primary-fixed": "#001a42",
+                      "tertiary-fixed": "#e2e2e9",
+                      "error-container": "#93000a",
+                      "inverse-on-surface": "#303033",
+                      "tertiary-fixed-dim": "#c6c6cd",
+                      "on-primary-fixed-variant": "#004395",
+                      "tertiary": "#c6c6cd",
+                      "on-surface-variant": "#c2c6d6",
+                      "surface-container": "#1f2022",
+                      "on-primary-container": "#00285d",
+                      "inverse-primary": "#005ac2",
+                      "outline-variant": "#424754",
+                      "background": "#121315",
+                      // Custom brand colors mentioned in prompt
+                      "brand-bg": "#0A0B0D",
+                      "brand-primary": "#3B82F6",
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "component-padding-x": "12px",
+                      "component-padding-y": "8px",
+                      "base": "4px",
+                      "grid-columns": "12",
+                      "panel-gutter": "16px",
+                      "container-margin": "24px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Inter", "sans-serif"],
+                      "body-main": ["Inter", "sans-serif"],
+                      "metadata-caps": ["Inter", "sans-serif"],
+                      "headline-md": ["Inter", "sans-serif"],
+                      "section-title": ["Inter", "sans-serif"],
+                      "label-sm": ["Inter", "sans-serif"]
+              },
+              "fontSize": {
+                      "display-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                      "body-main": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                      "metadata-caps": ["11px", { "lineHeight": "1.0", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                      "headline-md": ["22px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                      "section-title": ["18px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                      "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "500" }]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #0A0B0D; color: #e3e2e5; }
+        .glass-panel { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .level-1 { background-color: #141518; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .level-2 { background-color: #191B20; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .bg-brand-bg { background-color: #0A0B0D; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0A0B0D; }
+        ::-webkit-scrollbar-thumb { background: #343537; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #46464a; }
+    </style>
+</head>
+<body class="bg-brand-bg text-on-surface antialiased h-screen overflow-hidden flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-panel-gutter h-16 bg-surface dark:bg-surface border-b border-white/5 bg-surface-container-low hidden md:flex">
+<div class="flex items-center space-x-6">
+<span class="font-display-lg text-display-lg font-black tracking-tighter text-primary dark:text-primary">SIPER</span>
+</div>
+<div class="flex-1 flex justify-center max-w-2xl px-4">
+<div class="w-full relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="w-full bg-[#121315] border border-white/5 rounded pl-10 pr-4 py-2 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Global Entity Search..." type="text"/>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center space-x-1">
+<span class="px-1.5 py-0.5 rounded border border-white/10 text-[10px] text-on-surface-variant font-mono">⌘</span>
+<span class="px-1.5 py-0.5 rounded border border-white/10 text-[10px] text-on-surface-variant font-mono">K</span>
+</div>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-colors rounded-full relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-brand-primary rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-colors rounded-full">
+<span class="material-symbols-outlined">terminal</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-white/5 transition-colors rounded-full">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</nav>
+<div class="flex flex-1 pt-16 overflow-hidden">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 bottom-0 w-[240px] z-40 flex flex-col py-4 px-2 bg-surface-container-low dark:bg-surface-container-low border-r border-white/5 hidden md:flex">
+<div class="mb-6 px-4 py-2 bg-[#121315] rounded border border-white/5 flex items-center space-x-3">
+<div class="w-8 h-8 rounded bg-surface-variant flex items-center justify-center text-on-surface font-bold text-sm">OP</div>
+<div>
+<div class="font-label-sm text-label-sm text-on-surface">Operator-01</div>
+<div class="font-metadata-caps text-metadata-caps text-on-surface-variant mt-0.5">Field Intelligence</div>
+</div>
+</div>
+<div class="space-y-1 flex-1">
+<a class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-sm">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-sm">folder_shared</span>
+<span class="font-label-sm text-label-sm">Cases</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-sm">person_search</span>
+<span class="font-label-sm text-label-sm">Entity Search</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-sm">hub</span>
+<span class="font-label-sm text-label-sm">Graph Explorer</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-sm">assessment</span>
+<span class="font-label-sm text-label-sm">Reports</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-sm">history_edu</span>
+<span class="font-label-sm text-label-sm">Audit Log</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-2.5 rounded-lg bg-primary-container text-on-primary-container font-bold opacity-80 transition-all duration-150 scale-95" href="#">
+<span class="material-symbols-outlined text-sm">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</div>
+<div class="mt-auto space-y-1 pt-4 border-t border-white/5">
+<a class="flex items-center space-x-3 px-4 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-sm">contact_support</span>
+<span class="font-label-sm text-label-sm">Support</span>
+</a>
+<a class="flex items-center space-x-3 px-4 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined text-sm">help_outline</span>
+<span class="font-label-sm text-label-sm">Help</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 md:ml-[240px] overflow-y-auto bg-brand-bg p-container-margin relative">
+<!-- Page Header -->
+<div class="mb-8 border-b border-white/5 pb-4">
+<h1 class="font-display-lg text-display-lg text-on-surface mb-2">Design System Reference</h1>
+<p class="font-body-main text-body-main text-on-surface-variant max-w-3xl">Comprehensive documentation and sticker sheet for the SIPER Intelligence OS interface. Adheres to clinical, authoritative, and minimalist principles.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+<!-- 1. Typography & Colors -->
+<section class="level-1 p-6 rounded-lg flex flex-col space-y-6">
+<h2 class="font-headline-md text-headline-md border-b border-white/5 pb-2 text-primary">Typography &amp; Colors</h2>
+<div class="space-y-4">
+<div class="grid grid-cols-[100px_1fr] gap-4 items-center">
+<span class="font-metadata-caps text-metadata-caps text-on-surface-variant">Display Lg</span>
+<span class="font-display-lg text-display-lg">Total Visibility</span>
+</div>
+<div class="grid grid-cols-[100px_1fr] gap-4 items-center">
+<span class="font-metadata-caps text-metadata-caps text-on-surface-variant">Headline Md</span>
+<span class="font-headline-md text-headline-md">Entity Analysis</span>
+</div>
+<div class="grid grid-cols-[100px_1fr] gap-4 items-center">
+<span class="font-metadata-caps text-metadata-caps text-on-surface-variant">Section Title</span>
+<span class="font-section-title text-section-title">Network Connections</span>
+</div>
+<div class="grid grid-cols-[100px_1fr] gap-4 items-center">
+<span class="font-metadata-caps text-metadata-caps text-on-surface-variant">Body Main</span>
+<span class="font-body-main text-body-main">The investigation has uncovered multiple overlapping communication nodes between the primary subject and known associates.</span>
+</div>
+<div class="grid grid-cols-[100px_1fr] gap-4 items-center">
+<span class="font-metadata-caps text-metadata-caps text-on-surface-variant">Label Sm</span>
+<span class="font-label-sm text-label-sm">Subject Identified</span>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4">
+<div class="flex flex-col">
+<div class="h-12 w-full rounded bg-brand-bg border border-white/20 mb-2"></div>
+<span class="font-metadata-caps text-metadata-caps text-on-surface-variant">Level 0 (Base)</span>
+<span class="font-metadata-caps text-[10px] text-on-surface-variant opacity-70">#0A0B0D</span>
+</div>
+<div class="flex flex-col">
+<div class="h-12 w-full rounded bg-[#141518] border border-white/20 mb-2"></div>
+<span class="font-metadata-caps text-metadata-caps text-on-surface-variant">Level 1 (Surface)</span>
+<span class="font-metadata-caps text-[10px] text-on-surface-variant opacity-70">#141518</span>
+</div>
+<div class="flex flex-col">
+<div class="h-12 w-full rounded bg-[#191B20] border border-white/20 mb-2"></div>
+<span class="font-metadata-caps text-metadata-caps text-on-surface-variant">Level 2 (Active)</span>
+<span class="font-metadata-caps text-[10px] text-on-surface-variant opacity-70">#191B20</span>
+</div>
+<div class="flex flex-col">
+<div class="h-12 w-full rounded bg-[#3B82F6] border border-white/20 mb-2"></div>
+<span class="font-metadata-caps text-metadata-caps text-on-surface-variant">Primary</span>
+<span class="font-metadata-caps text-[10px] text-on-surface-variant opacity-70">#3B82F6</span>
+</div>
+</div>
+</section>
+<!-- 2. Buttons & Inputs -->
+<section class="level-1 p-6 rounded-lg flex flex-col space-y-6">
+<h2 class="font-headline-md text-headline-md border-b border-white/5 pb-2 text-primary">Controls &amp; Inputs</h2>
+<div class="flex flex-wrap gap-4">
+<button class="bg-[#3B82F6] hover:bg-[#2563EB] text-white font-label-sm text-label-sm px-4 py-2 rounded transition-colors flex items-center space-x-2">
+<span class="material-symbols-outlined text-[16px]">search</span>
+<span>Execute Query</span>
+</button>
+<button class="bg-transparent border border-white/20 text-on-surface hover:bg-white/5 font-label-sm text-label-sm px-4 py-2 rounded transition-colors">
+                            Secondary Action
+                        </button>
+<button class="bg-transparent text-on-surface-variant hover:text-on-surface hover:bg-white/5 font-label-sm text-label-sm px-4 py-2 rounded transition-colors">
+                            Ghost Button
+                        </button>
+<button class="bg-error/20 border border-error/50 text-error hover:bg-error/30 font-label-sm text-label-sm px-4 py-2 rounded transition-colors flex items-center space-x-2">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span>Purge Node</span>
+</button>
+</div>
+<div class="space-y-4">
+<div>
+<label class="font-metadata-caps text-metadata-caps text-on-surface-variant block mb-1">Standard Input</label>
+<input class="w-full bg-[#0A0B0D] border border-white/10 rounded px-3 py-2 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Enter IP Address or Hash..." type="text"/>
+</div>
+<div>
+<label class="font-metadata-caps text-metadata-caps text-on-surface-variant block mb-2">Filter Chips</label>
+<div class="flex flex-wrap gap-2">
+<span class="bg-[#3B82F6]/20 border border-[#3B82F6]/50 text-[#3B82F6] px-2 py-1 rounded text-xs font-medium flex items-center space-x-1 cursor-pointer">
+<span>Status: Active</span>
+<span class="material-symbols-outlined text-[12px]">close</span>
+</span>
+<span class="bg-white/5 border border-white/10 text-on-surface-variant hover:text-on-surface hover:bg-white/10 px-2 py-1 rounded text-xs font-medium cursor-pointer transition-colors">
+                                    Region: EMEA
+                                </span>
+<span class="bg-white/5 border border-white/10 text-on-surface-variant hover:text-on-surface hover:bg-white/10 px-2 py-1 rounded text-xs font-medium cursor-pointer transition-colors">
+                                    Type: Comm Node
+                                </span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>
