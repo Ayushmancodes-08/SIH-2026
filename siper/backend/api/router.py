@@ -34,9 +34,14 @@ def handle_api_request(
     auth_header: Optional[str],
     client_ip: str = "127.0.0.1"
 ) -> Tuple[int, Dict[str, Any]]:
-    """Dispatch incoming API request to appropriate controller."""
-    # Strip prefix
-    rel_path = path[len(API_PREFIX):] if path.startswith(API_PREFIX) else path
+    # Strip prefix safely
+    rel_path = path
+    if rel_path.startswith(API_PREFIX):
+        rel_path = rel_path[len(API_PREFIX):]
+    elif rel_path.startswith("/api"):
+        rel_path = rel_path[len("/api"):]
+    elif rel_path.startswith("/v1"):
+        rel_path = rel_path[len("/v1"):]
     
     # Extract session
     session = None

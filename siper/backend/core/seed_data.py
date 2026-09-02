@@ -93,6 +93,7 @@ def seed_database():
         # 1. Seed Users
         users = [
             ("usr_001", "investigator@siper.gov.in", hash_password("Sentinel@2026"), "Investigator-7", "INVESTIGATOR", "NCRB-INV-26189", "Special Intelligence Wing"),
+            ("usr_001b", "investigator@ncrb.gov.in", hash_password("Investigator@2026"), "Investigator-7", "INVESTIGATOR", "NCRB-INV-26189", "Special Intelligence Wing"),
             ("usr_002", "supervisor@siper.gov.in", hash_password("Sentinel@2026"), "Supervisor-1", "SUPERVISOR", "MHA-SUP-1004", "Operational Command"),
             ("usr_003", "analyst@siper.gov.in", hash_password("Sentinel@2026"), "Analyst-3", "ANALYST", "NCRB-ANA-5521", "Graph Analytics Unit"),
             ("usr_004", "admin@siper.gov.in", hash_password("Sentinel@2026"), "Admin-Root", "ADMIN", "NCRB-ADM-0001", "Security & IT Infrastructure"),

@@ -8,16 +8,30 @@ import time
 from typing import Dict, Any, List, Optional
 from .config import DB_PATH
 
+_db_initialized = False
+
 def get_db():
-    """Return a configured SQLite connection."""
+    """Return a configured SQLite connection, ensuring schema exists."""
+    global _db_initialized
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON;")
+    if not _db_initialized:
+        try:
+            cursor = conn.cursor()
+            cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='users'")
+            if not cursor.fetchone():
+                init_db()
+            _db_initialized = True
+        except Exception:
+            pass
     return conn
 
 def init_db():
     """Initialize database tables and indexes."""
-    conn = get_db()
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA foreign_keys = ON;")
     with conn:
         conn.executescript(
             """
