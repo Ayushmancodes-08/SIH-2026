@@ -24,12 +24,19 @@ window.SiperApp = {
       }
 
       const response = await fetch(`/api/v1${path}`, options);
-      if (response.status === 401 && !path.startsWith("/auth/login")) {
+      if (response.status === 401 && !path.startsWith("/auth/login") && !path.startsWith("/auth/verify-2fa")) {
         window.SiperApp.logout();
         throw new Error("Session expired");
       }
 
-      return await response.json();
+      let json;
+      try {
+        json = await response.json();
+      } catch (err) {
+        throw new Error(`Server response error (${response.status} ${response.statusText})`);
+      }
+
+      return json;
     },
 
     get(path) {

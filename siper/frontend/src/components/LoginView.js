@@ -161,19 +161,19 @@ window.SiperLoginView = {
       const res = await window.SiperApp.api.post("/auth/login", { email, password });
       this.state.loading = false;
 
-      if (res.requires_2fa) {
+      if (res && res.requires_2fa) {
         this.state.requires2FA = true;
         this.state.challengeId = res.challenge_id;
         window.SiperApp.showToast("Credentials accepted. Enter 2FA code (261890).", "info");
-      } else if (res.token) {
+      } else if (res && res.token) {
         window.SiperApp.setAuth(res.token, res.user);
         window.SiperApp.navigate("dashboard");
       } else {
-        this.state.error = res.message || "Authentication failed.";
+        this.state.error = (res && (res.message || res.error)) || "Authentication failed. Invalid email or password.";
       }
     } catch (err) {
       this.state.loading = false;
-      this.state.error = "Connection error to SIPER server.";
+      this.state.error = err.message ? `Server Error: ${err.message}` : "Connection error to SIPER server.";
     }
     window.SiperApp.render();
   },
